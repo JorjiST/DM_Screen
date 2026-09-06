@@ -18,10 +18,11 @@ public class CreateCharacterAppTest {
         ModifierEngine modifierEngine = new ModifierEngine();
         Path path = Path.of(getClass().getResource("/elf.json").toURI());
         Race race = contentLoader.loadRace(path);
-        Hero hero = new Hero(race.id(), 1);
+        Hero hero = new Hero(race.id(), race.baseSpeed(), 1);
         modifierEngine.apply(hero, race.modifiers());
 
         assertEquals(hero.getRaceId(), race.id());
+        assertEquals(race.baseSpeed(), hero.getSpeed());
         assertEquals(2, hero.getAbilityScores().get(Abilities.DEXTERITY).effectiveValue());
         assertEquals(10, hero.getAbilityScores().get(Abilities.STRENGTH).effectiveValue());
 

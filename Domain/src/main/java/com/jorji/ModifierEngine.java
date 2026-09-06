@@ -22,8 +22,23 @@ public class ModifierEngine {
         //Подумать над рефакторингом в паттерн Стратегия
         switch (prefix) {
             case "ability" -> applyAbilityModifier(hero, parts[1], modifier);
+            case "speed" -> applySpeedModifier(hero, modifier);
             default -> throw new UnsupportedOperationException(
                     "Unsupported target: " + modifier.target());
+        }
+    }
+
+    private void applySpeedModifier(Hero hero, Modifier modifier){
+        if(!(modifier.value() instanceof Integer amount)){
+            throw new IllegalArgumentException(
+                    "Expected integer value for ability modifier, got: " + modifier.value());
+        }
+
+        switch (modifier.operation()){
+            case ADD -> hero.setSpeed(hero.getSpeed() + amount);
+            case SET -> hero.setSpeed(amount);
+            case GRANT -> throw new UnsupportedOperationException(
+                    "GRANT is not applicable to ability scores");
         }
     }
 

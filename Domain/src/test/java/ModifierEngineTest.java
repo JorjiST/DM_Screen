@@ -15,7 +15,7 @@ public class ModifierEngineTest {
 
     @Test
     void applyModifier(){
-        Hero hero = new Hero("elf", 1);
+        Hero hero = new Hero("elf", 1,1);
         hero.getAbilityScores().put(Abilities.CHARISMA, new AbilityScore(1));
         ModifierEngine modifierEngine = new ModifierEngine();
         modifierEngine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
@@ -34,7 +34,7 @@ public class ModifierEngineTest {
         AbilityScore score = new AbilityScore(10);
         score.setOverride(15);
 
-        Hero hero = new Hero("elf", 1);
+        Hero hero = new Hero("elf", 1,1);
         hero.getAbilityScores().put(Abilities.CHARISMA, score);
 
         ModifierEngine engine = new ModifierEngine();

@@ -14,6 +14,7 @@ import java.util.Map;
 @Setter
 public class Hero {
     private String raceId;
+    private Integer speed;
     private int level;
     private final Map<Abilities, AbilityScore> abilityScores = new EnumMap<>(Abilities.class);
 
