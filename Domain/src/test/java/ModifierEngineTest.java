@@ -1,4 +1,4 @@
-import com.jorji.Ability.Abilities;
+import com.jorji.Ability.Ability;
 import com.jorji.Ability.AbilityScore;
 import com.jorji.Character.Hero;
 import com.jorji.ModifierEngine;
@@ -16,10 +16,10 @@ public class ModifierEngineTest {
     @Test
     void applyModifier(){
         Hero hero = new Hero("elf", 1,1);
-        hero.getAbilityScores().put(Abilities.CHARISMA, new AbilityScore(1));
+        hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(1));
         ModifierEngine modifierEngine = new ModifierEngine();
         modifierEngine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
-        assertEquals(11, hero.getAbilityScores().get(Abilities.CHARISMA).effectiveValue());
+        assertEquals(11, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
     }
 
     @Test
@@ -35,7 +35,7 @@ public class ModifierEngineTest {
         score.setOverride(15);
 
         Hero hero = new Hero("elf", 1,1);
-        hero.getAbilityScores().put(Abilities.CHARISMA, score);
+        hero.getAbilityScores().put(Ability.CHARISMA, score);
 
         ModifierEngine engine = new ModifierEngine();
         engine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));

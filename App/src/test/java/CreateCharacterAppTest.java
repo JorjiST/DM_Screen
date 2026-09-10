@@ -1,4 +1,4 @@
-import com.jorji.Ability.Abilities;
+import com.jorji.Ability.Ability;
 import com.jorji.Character.Hero;
 import com.jorji.ModifierEngine;
 import com.jorji.Race;
@@ -23,8 +23,8 @@ public class CreateCharacterAppTest {
 
         assertEquals(hero.getRaceId(), race.id());
         assertEquals(race.baseSpeed(), hero.getSpeed());
-        assertEquals(2, hero.getAbilityScores().get(Abilities.DEXTERITY).effectiveValue());
-        assertEquals(10, hero.getAbilityScores().get(Abilities.STRENGTH).effectiveValue());
+        assertEquals(2, hero.getAbilityScores().get(Ability.DEXTERITY).effectiveValue());
+        assertEquals(10, hero.getAbilityScores().get(Ability.STRENGTH).effectiveValue());
 
     }
 }

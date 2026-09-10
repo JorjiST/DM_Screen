@@ -1,6 +1,6 @@
 package com.jorji.Ability;
 
-public enum Abilities {
+public enum Ability {
     STRENGTH,
     DEXTERITY,
     CONSTITUTION,

@@ -1,6 +1,6 @@
 package com.jorji.Character;
 
-import com.jorji.Ability.Abilities;
+import com.jorji.Ability.Ability;
 import com.jorji.Ability.AbilityScore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,14 +16,14 @@ public class Hero {
     private String raceId;
     private Integer speed;
     private int level;
-    private final Map<Abilities, AbilityScore> abilityScores = new EnumMap<>(Abilities.class);
+    private final Map<Ability, AbilityScore> abilityScores = new EnumMap<>(Ability.class);
 
     {
-        abilityScores.put(Abilities.CHARISMA, new AbilityScore(0));
-        abilityScores.put(Abilities.CONSTITUTION, new AbilityScore(0));
-        abilityScores.put(Abilities.DEXTERITY, new AbilityScore(0));
-        abilityScores.put(Abilities.STRENGTH, new AbilityScore(0));
-        abilityScores.put(Abilities.WISDOM, new AbilityScore(0));
-        abilityScores.put(Abilities.INTELLIGENCE, new AbilityScore(0));
+        abilityScores.put(Ability.CHARISMA, new AbilityScore(0));
+        abilityScores.put(Ability.CONSTITUTION, new AbilityScore(0));
+        abilityScores.put(Ability.DEXTERITY, new AbilityScore(0));
+        abilityScores.put(Ability.STRENGTH, new AbilityScore(0));
+        abilityScores.put(Ability.WISDOM, new AbilityScore(0));
+        abilityScores.put(Ability.INTELLIGENCE, new AbilityScore(0));
     }
 }

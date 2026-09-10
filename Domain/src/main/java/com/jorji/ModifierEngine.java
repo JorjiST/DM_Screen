@@ -1,6 +1,6 @@
 package com.jorji;
 
-import com.jorji.Ability.Abilities;
+import com.jorji.Ability.Ability;
 import com.jorji.Ability.AbilityScore;
 import com.jorji.Character.Hero;
 import com.jorji.modifier.Modifier;
@@ -43,7 +43,7 @@ public class ModifierEngine {
     }
 
     private void applyAbilityModifier(Hero hero, String abilityName, Modifier modifier) {
-        Abilities ability = Abilities.valueOf(abilityName.toUpperCase());
+        Ability ability = Ability.valueOf(abilityName.toUpperCase());
         AbilityScore score = hero.getAbilityScores().get(ability);
 
         if (!(modifier.value() instanceof Integer amount)) {
