@@ -5,9 +5,20 @@ import com.jorji.Ability.AbilityScore;
 import com.jorji.Character.Hero;
 import com.jorji.modifier.Modifier;
 
+import modifier.ModifierHandler;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ModifierEngine {
+
+    private final Map<String, ModifierHandler> modifierHandlers = new HashMap();
+
+
+    public void registerModifierHandler(String targetPrefix, ModifierHandler handler) {
+        modifierHandlers.put(targetPrefix, handler);
+    }
 
     public void apply(Hero hero, List<Modifier> modifierList){
         for(Modifier modifier : modifierList){
@@ -19,13 +30,15 @@ public class ModifierEngine {
         String[] parts = modifier.target().split("\\.", 2);
         String prefix = parts[0];
 
-        //Подумать над рефакторингом в паттерн Стратегия
-        switch (prefix) {
-            case "ability" -> applyAbilityModifier(hero, parts[1], modifier);
-            case "speed" -> applySpeedModifier(hero, modifier);
-            default -> throw new UnsupportedOperationException(
-                    "Unsupported target: " + modifier.target());
-        }
+        modifierHandlers.get(prefix).apply(hero, modifier);
+
+        // //Подумать над рефакторингом в паттерн Стратегия
+        // switch (prefix) {
+        //     case "ability" -> applyAbilityModifier(hero, parts[1], modifier);
+        //     case "speed" -> applySpeedModifier(hero, modifier);
+        //     default -> throw new UnsupportedOperationException(
+        //             "Unsupported target: " + modifier.target());
+        // }
     }
 
     private void applySpeedModifier(Hero hero, Modifier modifier){
