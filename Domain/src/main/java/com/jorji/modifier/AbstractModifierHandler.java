@@ -1,10 +1,9 @@
-package modifier;
+package com.jorji.modifier;
 
 import java.util.function.BiConsumer;
 import java.util.function.ToIntFunction;
 
 import com.jorji.Character.Hero;
-import com.jorji.modifier.Modifier;
 
 public abstract class AbstractModifierHandler implements ModifierHandler {
 

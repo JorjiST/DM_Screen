@@ -1,12 +1,11 @@
-package modifier;
+package com.jorji.modifier;
 
 import com.jorji.ModifierEngine;
 import com.jorji.Character.Hero;
-import com.jorji.modifier.Modifier;
 
 public class SpeedModifierHandler extends AbstractModifierHandler {
 
-    private ModifierEngine engine;
+    private final ModifierEngine engine;
 
     public SpeedModifierHandler(ModifierEngine engine) {
         this.engine = engine;

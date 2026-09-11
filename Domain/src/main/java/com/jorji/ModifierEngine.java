@@ -5,7 +5,7 @@ import com.jorji.Ability.AbilityScore;
 import com.jorji.Character.Hero;
 import com.jorji.modifier.Modifier;
 
-import modifier.ModifierHandler;
+import com.jorji.modifier.ModifierHandler;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ModifierEngine {
 
-    private final Map<String, ModifierHandler> modifierHandlers = new HashMap();
+    private final Map<String, ModifierHandler> modifierHandlers = new HashMap<>();
 
 
     public void registerModifierHandler(String targetPrefix, ModifierHandler handler) {

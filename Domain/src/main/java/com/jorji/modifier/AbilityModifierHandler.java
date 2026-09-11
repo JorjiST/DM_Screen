@@ -1,8 +1,8 @@
-package modifier;
+package com.jorji.modifier;
 
+import com.jorji.Ability.Ability;
 import com.jorji.ModifierEngine;
 import com.jorji.Character.Hero;
-import com.jorji.modifier.Modifier;
 
 public class AbilityModifierHandler extends AbstractModifierHandler {
 
@@ -20,12 +20,12 @@ public class AbilityModifierHandler extends AbstractModifierHandler {
     @Override
     public void apply(Hero hero, Modifier modifier) {
         String[] parts = modifier.target().split("\\.", 2);
-        String abilityName = parts[1];
+        String abilityName = parts[1].toUpperCase();
         applyIntegerModifier(
                 hero,
                 modifier,
-                h -> h.getAbilityScores().get(abilityName).effectiveValue(),
-                (h, value) -> h.getAbilityScores().get(abilityName).setComputed(value)
+                h -> h.getAbilityScores().get(Ability.valueOf(abilityName)).getComputed(),
+                (h, value) -> h.getAbilityScores().get(Ability.valueOf(abilityName)).setComputed(value)
         );
     }
     

@@ -2,10 +2,11 @@ import com.jorji.Ability.Ability;
 import com.jorji.Ability.AbilityScore;
 import com.jorji.Character.Hero;
 import com.jorji.ModifierEngine;
+import com.jorji.modifier.AbilityModifierHandler;
 import com.jorji.modifier.Modifier;
 import com.jorji.modifier.Operation;
 
-import modifier.SpeedModifierHandler;
+import com.jorji.modifier.SpeedModifierHandler;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,8 +39,13 @@ public class ModifierEngineTest {
     void applyModifier(){
         Hero hero = new Hero("elf", 1,1);
         hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(1));
+
         ModifierEngine modifierEngine = new ModifierEngine();
+        AbilityModifierHandler modifierHandler = new AbilityModifierHandler(modifierEngine);
+
+        modifierHandler.register();
         modifierEngine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
+
         assertEquals(11, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
     }
 
@@ -59,6 +65,9 @@ public class ModifierEngineTest {
         hero.getAbilityScores().put(Ability.CHARISMA, score);
 
         ModifierEngine engine = new ModifierEngine();
+        AbilityModifierHandler modifierHandler = new AbilityModifierHandler(engine);
+
+        modifierHandler.register();
         engine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
 
         assertEquals(20, score.getComputed()); 
