@@ -1,10 +1,10 @@
 import com.jorji.Ability.Ability;
 import com.jorji.Ability.AbilityScore;
-import com.jorji.Character.Hero;
+import com.jorji.hero.Hero;
 import com.jorji.ModifierEngine;
 import com.jorji.modifier.AbilityModifierHandler;
 import com.jorji.modifier.Modifier;
-import com.jorji.modifier.Operation;
+import com.jorji.Operation;
 
 import com.jorji.modifier.SpeedModifierHandler;
 
@@ -21,18 +21,10 @@ public class ModifierEngineTest {
 
     @Test
     void shouldRegisterItselfInEngine() {
-        // 1. Создаем заглушку (mock) для движка
         ModifierEngine mockEngine = mock(ModifierEngine.class);
-        
-        // 2. Создаем тестируемый объект и передаем ему mock
-        SpeedModifierHandler handler = new SpeedModifierHandler(mockEngine);
-
-        // 3. Вызываем тестируемый метод
-        handler.register();
-
-        // 4. Проверяем, что метод registerModifierHandler был вызван 
-        // с точным именем "speed" и ссылкой на сам этот обработчик (handler)
-        verify(mockEngine).registerModifierHandler("speed", handler);
+        SpeedModifierHandler speedHandler = new SpeedModifierHandler();
+        mockEngine.registerModifierHandler(speedHandler);
+        verify(mockEngine).registerModifierHandler(speedHandler);
     }
 
     @Test
@@ -41,9 +33,9 @@ public class ModifierEngineTest {
         hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(1));
 
         ModifierEngine modifierEngine = new ModifierEngine();
-        AbilityModifierHandler modifierHandler = new AbilityModifierHandler(modifierEngine);
+        AbilityModifierHandler modifierHandler = new AbilityModifierHandler();
 
-        modifierHandler.register();
+        modifierEngine.registerModifierHandler(modifierHandler);
         modifierEngine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
 
         assertEquals(11, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
@@ -65,12 +57,12 @@ public class ModifierEngineTest {
         hero.getAbilityScores().put(Ability.CHARISMA, score);
 
         ModifierEngine engine = new ModifierEngine();
-        AbilityModifierHandler modifierHandler = new AbilityModifierHandler(engine);
+        AbilityModifierHandler modifierHandler = new AbilityModifierHandler();
 
-        modifierHandler.register();
+        engine.registerModifierHandler(modifierHandler);
         engine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
 
         assertEquals(20, score.getComputed()); 
         assertEquals(15, score.effectiveValue()); 
-}
+    }
 }

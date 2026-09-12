@@ -3,9 +3,17 @@ package com.jorji.modifier;
 import java.util.function.BiConsumer;
 import java.util.function.ToIntFunction;
 
-import com.jorji.Character.Hero;
+import com.jorji.hero.Hero;
+import lombok.Getter;
 
+@Getter
 public abstract class AbstractModifierHandler implements ModifierHandler {
+
+    private final String prefix;
+
+    protected AbstractModifierHandler(String prefix){
+        this.prefix = prefix;
+    }
 
     protected void applyIntegerModifier(Hero hero, Modifier modifier, ToIntFunction<Hero> getter, BiConsumer<Hero, Integer> setter) {
         if(!(modifier.value() instanceof Integer amount)){

@@ -1,20 +1,12 @@
 package com.jorji.modifier;
 
 import com.jorji.Ability.Ability;
-import com.jorji.ModifierEngine;
-import com.jorji.Character.Hero;
+import com.jorji.hero.Hero;
 
 public class AbilityModifierHandler extends AbstractModifierHandler {
 
-    private final ModifierEngine engine;
-
-    public AbilityModifierHandler(ModifierEngine engine) {
-        this.engine = engine;
-    }
-
-    @Override
-    public void register() {
-        engine.registerModifierHandler("ability", this);
+    public AbilityModifierHandler() {
+        super("ability");
     }
 
     @Override

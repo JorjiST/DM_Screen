@@ -1,5 +1,5 @@
  import com.jorji.Ability.Ability;
- import com.jorji.Character.Hero;
+ import com.jorji.hero.Hero;
  import com.jorji.ModifierEngine;
  import com.jorji.Race;
  import com.jorji.loader.ContentLoader;

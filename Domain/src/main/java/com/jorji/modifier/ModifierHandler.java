@@ -1,8 +1,7 @@
 package com.jorji.modifier;
 
-import com.jorji.Character.Hero;
+import com.jorji.hero.Hero;
 
 public interface ModifierHandler {
-    void register();
     void apply(Hero hero, Modifier modifier);
 }

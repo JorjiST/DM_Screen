@@ -1,19 +1,13 @@
 package com.jorji.modifier;
 
-import com.jorji.ModifierEngine;
-import com.jorji.Character.Hero;
+import com.jorji.hero.Hero;
+import lombok.Getter;
 
+@Getter
 public class SpeedModifierHandler extends AbstractModifierHandler {
 
-    private final ModifierEngine engine;
-
-    public SpeedModifierHandler(ModifierEngine engine) {
-        this.engine = engine;
-    }
-
-    @Override
-    public void register() {
-        engine.registerModifierHandler("speed", this);
+    public SpeedModifierHandler() {
+        super("speed");
     }
 
     @Override

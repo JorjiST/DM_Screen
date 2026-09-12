@@ -1,4 +1,4 @@
-package com.jorji.modifier;
+package com.jorji;
 
 public enum Operation {
     ADD,
