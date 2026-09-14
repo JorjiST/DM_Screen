@@ -1,9 +1,10 @@
-package com.jorji.Ability;
+package com.jorji.ability;
 
 import lombok.Getter;
 
 @Getter
 public enum Skill {
+    DEXTERITY(Ability.DEXTERITY),
     ACROBATICS(Ability.DEXTERITY),
     ANIMAL_HANDLING(Ability.WISDOM),
     ARCANA(Ability.INTELLIGENCE),

@@ -1,13 +1,14 @@
-import com.jorji.Ability.Ability;
-import com.jorji.Ability.AbilityScore;
+import com.jorji.ability.Ability;
+import com.jorji.ability.AbilityScore;
 import com.jorji.hero.Hero;
 import com.jorji.ModifierEngine;
-import com.jorji.modifier.AbilityModifierHandler;
+import com.jorji.modifier.handler.AbilityModifierHandler;
 import com.jorji.modifier.Modifier;
 import com.jorji.Operation;
 
-import com.jorji.modifier.SpeedModifierHandler;
+import com.jorji.modifier.handler.SpeedModifierHandler;
 
+import com.jorji.stat.Speed;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class ModifierEngineTest {
 
     @Test
     void applyModifier(){
-        Hero hero = new Hero("elf", 1,1);
+        Hero hero = new Hero("elf", new Speed(1),1, false);
         hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(1));
 
         ModifierEngine modifierEngine = new ModifierEngine();
@@ -53,7 +54,7 @@ public class ModifierEngineTest {
         AbilityScore score = new AbilityScore(10);
         score.setOverride(15);
 
-        Hero hero = new Hero("elf", 1,1);
+        Hero hero = new Hero("elf", new Speed(10),1, false);
         hero.getAbilityScores().put(Ability.CHARISMA, score);
 
         ModifierEngine engine = new ModifierEngine();

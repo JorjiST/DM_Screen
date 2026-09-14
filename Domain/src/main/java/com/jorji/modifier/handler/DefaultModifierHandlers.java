@@ -1,4 +1,4 @@
-package com.jorji.modifier;
+package com.jorji.modifier.handler;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ public final class DefaultModifierHandlers {
         return List.of(
                 new AbilityModifierHandler(),
                 new SpeedModifierHandler(),
-                new ArmorClassModifierHandler());
+                new ArmorClassModifierHandler(),
+                new SavingThrowModifierHandler());
     }
 }

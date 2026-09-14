@@ -1,4 +1,4 @@
-package com.jorji.Ability;
+package com.jorji.ability;
 
 public enum Ability {
     STRENGTH,

@@ -1,6 +1,7 @@
-package com.jorji.modifier;
+package com.jorji.modifier.handler;
 
 import com.jorji.hero.Hero;
+import com.jorji.modifier.Modifier;
 
 public class ArmorClassModifierHandler extends AbstractModifierHandler {
 
@@ -9,7 +10,7 @@ public class ArmorClassModifierHandler extends AbstractModifierHandler {
     }
 
     @Override
-    public void apply(Hero hero, Modifier modifier) {
+    public void apply(Hero hero, String remainder, Modifier modifier) {
 
     }
 }

@@ -1,7 +1,7 @@
 package com.jorji;
 
 import com.jorji.hero.Hero;
-import com.jorji.modifier.AbstractModifierHandler;
+import com.jorji.modifier.handler.AbstractModifierHandler;
 import com.jorji.modifier.Modifier;
 
 import java.util.HashMap;
@@ -26,6 +26,7 @@ public class ModifierEngine {
     private void applyOne(Hero hero, Modifier modifier) {
         String[] parts = modifier.target().split("\\.", 2);
         String prefix = parts[0];
-        modifierHandlers.get(prefix).apply(hero, modifier);
+        String reminder = parts[1];
+        modifierHandlers.get(prefix).apply(hero, reminder, modifier);
     }
 }
