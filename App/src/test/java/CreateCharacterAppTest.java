@@ -23,7 +23,7 @@
 
          Path path = Path.of(getClass().getResource("/elf.json").toURI());
          Race race = contentLoader.loadRace(path);
-         Hero hero = new Hero(race.id(), new Speed(race.baseSpeed()), 1, false);
+         Hero hero = new Hero(race.id(), "classId", new Speed(race.baseSpeed()), 1, false);
          modifierEngine.apply(hero, race.modifiers());
 
          assertEquals(hero.getRaceId(), race.id());
