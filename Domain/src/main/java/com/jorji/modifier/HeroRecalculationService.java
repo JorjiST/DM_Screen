@@ -18,7 +18,7 @@ public class HeroRecalculationService {
         resetToBase(hero);
 
         for (ModifierSource source : activeSources) {
-            modifierEngine.apply(hero, source.getModifiers());
+            modifierEngine.apply(hero, source.modifiers());
         }
     }
 

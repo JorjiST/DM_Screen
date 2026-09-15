@@ -18,6 +18,7 @@ import java.util.*;
 @AllArgsConstructor
 public class Hero {
     private String raceId;
+    private String classId;
     private Speed speed;
     private int level;
     private boolean hasShield;
@@ -59,6 +60,29 @@ public class Hero {
 
     public boolean hasSavingThrowProficiency(Ability ability){
         return savingThrowProficiencies.contains(ability);
+    }
+
+    public void addItemToInventory(Item item) {
+        inventory.add(item);
+    }
+
+    public void removeItemToInventory(Item item) {
+        inventory.remove(item);
+    }
+
+    public void equipItem(Item item, EquipmentSlot equipmentSlot){
+        if(equippedItems.containsKey(equipmentSlot)){
+            inventory.add(equippedItems.get(equipmentSlot));
+        }
+        equippedItems.put(equipmentSlot, item);
+        inventory.remove(item);
+    }
+
+    public void unequipItem(EquipmentSlot slot) {
+        Item item = equippedItems.remove(slot);
+        if (item != null) {
+            inventory.add(item);
+        }
     }
 
     public int getAbilityModifier(Ability ability){

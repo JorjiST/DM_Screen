@@ -18,6 +18,6 @@ public class ContentLoaderTest {
         assertEquals("Эльф", elf.name());
         assertEquals(30, elf.baseSpeed());
         assertEquals(2, elf.modifiers().size());
-        assertEquals("ability.dexterity", elf.modifiers().get(0).target());
+        assertEquals("ability.dexterity", elf.modifiers().getFirst().target());
     }
 }
