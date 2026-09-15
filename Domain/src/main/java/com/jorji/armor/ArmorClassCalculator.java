@@ -1,13 +1,14 @@
 package com.jorji.armor;
 
-import com.jorji.Item;
+import com.jorji.content.ArmorCategory;
 import com.jorji.ability.Ability;
+import com.jorji.content.Armor;
 import com.jorji.hero.Hero;
 
 import java.util.Optional;
 
 public class ArmorClassCalculator {
-    public int calculate(Hero hero, Optional<Item> equippedArmor, boolean hasShield) {
+    public int calculate(Hero hero, Optional<Armor> equippedArmor, boolean hasShield) {
         int dexModifier = hero.getAbilityModifier(Ability.DEXTERITY);
 
         int base = equippedArmor

@@ -1,4 +1,4 @@
-import com.jorji.Race;
+import com.jorji.content.Race;
 import com.jorji.loader.ContentLoader;
 import org.junit.jupiter.api.Test;
 

@@ -2,7 +2,7 @@ package com.jorji.loader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.jorji.Race;
+import com.jorji.content.Race;
 
 import java.io.IOException;
 import java.nio.file.Path;

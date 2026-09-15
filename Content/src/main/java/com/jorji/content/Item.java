@@ -1,6 +1,6 @@
-package com.jorji;
+package com.jorji.content;
 
-import com.jorji.armor.ArmorCategory;
+import com.jorji.modifier.ModifierSource;
 import com.jorji.modifier.Modifier;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,5 @@ public class Item implements ModifierSource {
     private String id;
     private String name;
     private EquipmentSlot equipmentSlot;
-    private ArmorCategory armorCategory;   // null для не-брони
-    private Integer baseArmorClass;         // null для не-брони
     private List<Modifier> modifiers;
 }

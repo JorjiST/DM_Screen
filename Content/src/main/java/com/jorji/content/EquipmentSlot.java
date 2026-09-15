@@ -1,4 +1,4 @@
-package com.jorji;
+package com.jorji.content;
 
 public enum EquipmentSlot {
     ARMOR,

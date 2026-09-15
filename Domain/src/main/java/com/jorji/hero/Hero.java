@@ -1,8 +1,9 @@
 package com.jorji.hero;
 
-import com.jorji.EquipmentSlot;
-import com.jorji.Item;
+import com.jorji.content.EquipmentSlot;
+import com.jorji.content.Item;
 import com.jorji.ability.*;
+import com.jorji.content.Armor;
 import com.jorji.armor.ArmorClass;
 import com.jorji.armor.ArmorClassCalculator;
 import com.jorji.stat.Speed;
@@ -12,9 +13,9 @@ import lombok.Setter;
 
 import java.util.*;
 
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
 public class Hero {
     private String raceId;
     private Speed speed;
@@ -25,6 +26,7 @@ public class Hero {
     private final Set<Skill> skillProficiencies = EnumSet.noneOf(Skill.class);  //Навыки
     private final Set<Ability> savingThrowProficiencies = EnumSet.noneOf(Ability.class); //Спасброски
     private final Map<EquipmentSlot, Item> equippedItems = new HashMap<>();
+    private final List<Item> inventory = new ArrayList<>();
 
     {
         abilityScores.put(Ability.CHARISMA, new AbilityScore(0));
@@ -47,6 +49,18 @@ public class Hero {
         return skillProficiencies.contains(skill);
     }
 
+    public void grantSavingThrowProficiency(Ability ability){
+        savingThrowProficiencies.add(ability);
+    }
+
+    public void revokeSavingThrowProficiency(Ability ability){
+        savingThrowProficiencies.remove(ability);
+    }
+
+    public boolean hasSavingThrowProficiency(Ability ability){
+        return savingThrowProficiencies.contains(ability);
+    }
+
     public int getAbilityModifier(Ability ability){
         return AbilityMath.modifierFor(abilityScores.get(ability).effectiveValue());
     }
@@ -63,7 +77,7 @@ public class Hero {
     }
 
     public int getArmorClassValue(ArmorClassCalculator calculator) {
-        int computed = calculator.calculate(this, Optional.ofNullable(equippedItems.get(EquipmentSlot.ARMOR)), hasShield());
+        int computed = calculator.calculate(this, Optional.ofNullable((Armor) equippedItems.get(EquipmentSlot.ARMOR)), hasShield());
         return armorClass.effectiveValue(computed);
     }
 }

@@ -1,5 +1,6 @@
-package com.jorji;
+package com.jorji.content;
 
+import com.jorji.modifier.ModifierSource;
 import com.jorji.modifier.Modifier;
 
 import java.util.List;
