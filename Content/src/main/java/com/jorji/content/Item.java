@@ -14,4 +14,9 @@ public class Item implements ModifierSource {
     private String name;
     private EquipmentSlot equipmentSlot;
     private List<Modifier> modifiers;
+
+    @Override
+    public List<Modifier> modifiers() {
+        return List.of();
+    }
 }
