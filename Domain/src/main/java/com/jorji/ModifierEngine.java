@@ -37,7 +37,9 @@ public class ModifierEngine {
     private void applyOne(Hero hero, Modifier modifier) {
         String[] parts = modifier.target().split("\\.", 2);
         String prefix = parts[0];
-        String reminder = parts[1];
+        String reminder;
+        if(parts.length == 2) reminder = parts[1];
+        else reminder = parts[0];
         modifierHandlers.get(prefix).apply(hero, reminder, modifier);
     }
 }
