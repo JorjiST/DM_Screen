@@ -17,6 +17,12 @@ public class ModifierEngine {
         modifierHandlers.put(handler.getPrefix(), handler);
     }
 
+    public void registerModifierHandler(List<AbstractModifierHandler> handlers){
+        for(AbstractModifierHandler handler : handlers){
+            registerModifierHandler(handler);
+        }
+    }
+
     public void apply(Hero hero, List<Modifier> modifierList){
         for(Modifier modifier : modifierList){
             applyOne(hero, modifier);

@@ -27,7 +27,7 @@ public class EquipmentService {
     private void recalculate(Hero hero) {
         List<ModifierSource> sources = new ArrayList<>();
         sources.add(contentRegistry.getRace(hero.getRaceId()));
-        sources.add(contentRegistry.getClass(hero.getClassId()));
+        sources.add(contentRegistry.getCharacterClass(hero.getClassId()));
         sources.addAll(hero.getEquippedItems().values());
 
         recalculationService.recalculate(hero, sources);

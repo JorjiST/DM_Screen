@@ -1,0 +1,11 @@
+{
+  "id": "ring",
+  "name": "кольцо",
+  "description": "Нося это кольцо, вы получаете +2 к харизме",
+  "equipmentSlot": "HAND",
+  "modifiers": [
+    {
+      "target": "ability.charisma", "operation": "ADD", "value": 2
+    }
+  ]
+}

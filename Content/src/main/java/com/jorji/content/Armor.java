@@ -13,6 +13,7 @@ public class Armor extends Item {
 
     public Armor(String id,
                  String name,
+                 String description,
                  EquipmentSlot equipmentSlot,
                  List<Modifier> modifiers,
                  ArmorCategory armorCategory,
@@ -21,6 +22,6 @@ public class Armor extends Item {
         this.armorCategory = armorCategory;
         this.baseArmorClass = baseArmorClass;
         this.minStrength = minStrength;
-        super(id, name, equipmentSlot, modifiers);
+        super(id, name, description, equipmentSlot, modifiers);
     }
 }

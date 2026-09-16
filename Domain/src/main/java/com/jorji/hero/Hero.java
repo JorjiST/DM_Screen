@@ -50,15 +50,15 @@ public class Hero {
         return skillProficiencies.contains(skill);
     }
 
-    public void grantSavingThrowProficiency(Ability ability){
+    public void grantSavingThrowProficiency(Ability ability) {
         savingThrowProficiencies.add(ability);
     }
 
-    public void revokeSavingThrowProficiency(Ability ability){
+    public void revokeSavingThrowProficiency(Ability ability) {
         savingThrowProficiencies.remove(ability);
     }
 
-    public boolean hasSavingThrowProficiency(Ability ability){
+    public boolean hasSavingThrowProficiency(Ability ability) {
         return savingThrowProficiencies.contains(ability);
     }
 
@@ -70,8 +70,8 @@ public class Hero {
         inventory.remove(item);
     }
 
-    public void equipItem(Item item, EquipmentSlot equipmentSlot){
-        if(equippedItems.containsKey(equipmentSlot)){
+    public void equipItem(Item item, EquipmentSlot equipmentSlot) {
+        if (equippedItems.containsKey(equipmentSlot)) {
             inventory.add(equippedItems.get(equipmentSlot));
         }
         equippedItems.put(equipmentSlot, item);
@@ -85,18 +85,18 @@ public class Hero {
         }
     }
 
-    public int getAbilityModifier(Ability ability){
+    public int getAbilityModifier(Ability ability) {
         return AbilityMath.modifierFor(abilityScores.get(ability).effectiveValue());
     }
 
-    public int getSkillModifier(Skill skill){
+    public int getSkillModifier(Skill skill) {
         int abilityModifier = getAbilityModifier(skill.getGoverningAbility());
         return skillProficiencies.contains(skill)
                 ? abilityModifier + ProficiencyBonus.forLevel(level)
                 : abilityModifier;
     }
 
-    public boolean hasShield(){
+    public boolean hasShield() {
         return hasShield;
     }
 

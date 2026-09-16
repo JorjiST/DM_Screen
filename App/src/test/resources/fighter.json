@@ -1,0 +1,9 @@
+{
+  "id": "fighter",
+  "name": "воин",
+  "modifiers": [
+    { "target": "ability.strength", "operation": "ADD", "value": 100 },
+    { "target": "savingThrow.strength", "operation": "GRANT"},
+    { "target": "skill.arcana", "operation": "GRANT"}
+  ]
+}
