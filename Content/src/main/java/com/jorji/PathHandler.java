@@ -7,13 +7,15 @@ import java.nio.file.Path;
 
 @FunctionalInterface
 public interface PathHandler {
+    Logger LOG = Logger.getLogger(PathHandler.class);
+
     void tryHandle(Path path) throws IOException;
 
     default void handle(Path path) {
         try {
             tryHandle(path);
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load: " + path, e);
+            LOG.error("Error handling path: " + path, e);
         }
     }
 }

@@ -4,6 +4,9 @@ import com.jorji.ability.Ability;
 import com.jorji.hero.Hero;
 import com.jorji.modifier.Modifier;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 public class SavingThrowModifierHandler extends AbstractModifierHandler{
 
     public SavingThrowModifierHandler(){
@@ -12,12 +15,12 @@ public class SavingThrowModifierHandler extends AbstractModifierHandler{
 
     @Override
     public void apply(Hero hero, String reminder, Modifier modifier) {
+        log.info("Applying saving throw modifier: " + modifier + " to hero: " + hero.getName() + " for ability: " + reminder);
         Ability ability = Ability.valueOf(reminder.toUpperCase());
 
         switch (modifier.operation()) {
             case GRANT -> hero.getSavingThrowProficiencies().add(ability);
-            case ADD, SET -> throw new UnsupportedOperationException(
-                    "ADD/SET are not applicable to saving throw proficiency");
+            case ADD, SET -> log.error("ADD/SET are not applicable to saving throw proficiency");
         }
     }
 }

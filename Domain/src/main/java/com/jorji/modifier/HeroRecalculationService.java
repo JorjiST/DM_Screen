@@ -4,9 +4,12 @@ import com.jorji.ModifierEngine;
 import com.jorji.ability.AbilityScore;
 import com.jorji.hero.Hero;
 
+import lombok.extern.log4j.Log4j;
+
 import java.util.List;
 
 //Вызывается в модуле App, в UI
+@Log4j
 public class HeroRecalculationService {
     private final ModifierEngine modifierEngine;
 
@@ -15,6 +18,7 @@ public class HeroRecalculationService {
     }
 
     public void recalculate(Hero hero, List<ModifierSource> activeSources) {
+        log.info("Recalculating hero: " + hero.getName() + " with active sources: " + activeSources);
         resetToBase(hero);
 
         for (ModifierSource source : activeSources) {
@@ -23,6 +27,7 @@ public class HeroRecalculationService {
     }
 
     private void resetToBase(Hero hero) {
+        log.info("Resetting hero to base values: " + hero.getName());
         for (AbilityScore score : hero.getAbilityScores().values()) {
             score.resetToBase();
         }

@@ -5,6 +5,8 @@ import com.jorji.content.Item;
 import com.jorji.content.Race;
 import com.jorji.loader.ContentLoader;
 
+import lombok.extern.log4j.Log4j;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,12 +15,14 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+@Log4j
 public class ContentRegistry {
     private final Map<String, Race> races = new HashMap<>();
     private final Map<String, Item> items = new HashMap<>();
     private final Map<String, CharacterClass> classes = new HashMap<>();
 
     public void loadAll(ContentLoader loader, Path rootDirectory) throws IOException {
+        log.info("Loading races, classes, and items from: " + rootDirectory);
         loadDirectory(rootDirectory.resolve("races"),
                 path -> register(races, loader.loadRace(path), Race::id));
 
@@ -31,7 +35,8 @@ public class ContentRegistry {
 
     private void loadDirectory(Path directory, PathHandler handler) throws IOException {
         if (!Files.isDirectory(directory)) {
-            throw new IllegalArgumentException("Not a directory: " + directory);
+            log.error("Directory does not exist: " + directory);
+            return;
         }
 
         try (Stream<Path> stream = Files.walk(directory)) {

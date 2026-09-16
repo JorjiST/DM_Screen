@@ -17,6 +17,7 @@ import java.util.*;
 @Setter
 @AllArgsConstructor
 public class Hero {
+    private String name;
     private String raceId;
     private String classId;
     private Speed speed;

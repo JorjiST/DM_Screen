@@ -2,18 +2,22 @@ package com.jorji;
 
 import com.jorji.hero.Hero;
 import com.jorji.modifier.handler.AbstractModifierHandler;
+
+import lombok.extern.log4j.Log4j;
+
 import com.jorji.modifier.Modifier;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Log4j
 public class ModifierEngine {
 
     private final Map<String, AbstractModifierHandler> modifierHandlers = new HashMap<>();
 
-
     public void registerModifierHandler(AbstractModifierHandler handler) {
+        log.info("Registering modifier handler for prefix: " + handler.getPrefix());
         modifierHandlers.put(handler.getPrefix(), handler);
     }
 
@@ -25,6 +29,7 @@ public class ModifierEngine {
 
     public void apply(Hero hero, List<Modifier> modifierList){
         for(Modifier modifier : modifierList){
+            log.info("Applying modifier: " + modifier);
             applyOne(hero, modifier);
         }
     }
