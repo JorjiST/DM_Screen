@@ -24,6 +24,7 @@ dependencies {
     testImplementation("org.mockito:mockito-junit-jupiter:5.20.0")
     compileOnly("org.projectlombok:lombok:1.18.42")
     annotationProcessor("org.projectlombok:lombok:1.18.42")
+    implementation("log4j:log4j:1.2.17")
     api(project(":Content"))
 }
 

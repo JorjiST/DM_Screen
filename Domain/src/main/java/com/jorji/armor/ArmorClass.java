@@ -1,12 +1,17 @@
 package com.jorji.armor;
 
+import com.jorji.stat.ComputedStat;
+
 import lombok.Setter;
 
 @Setter
-public class ArmorClass {
-    private Integer override;
+public class ArmorClass extends ComputedStat {
 
-    public int effectiveValue(int computed) {
-        return override != null ? override : computed;
+    public ArmorClass() {
+        super(0);
+    }
+
+    public ArmorClass(int base) {
+        super(base);
     }
 }

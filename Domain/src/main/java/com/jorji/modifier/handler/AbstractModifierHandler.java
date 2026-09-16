@@ -1,7 +1,6 @@
 package com.jorji.modifier.handler;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j;
 
 @Getter
 public abstract class AbstractModifierHandler implements ModifierHandler {

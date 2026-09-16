@@ -103,6 +103,6 @@ public class Hero {
 
     public int getArmorClassValue(ArmorClassCalculator calculator) {
         int computed = calculator.calculate(this, Optional.ofNullable((Armor) equippedItems.get(EquipmentSlot.ARMOR)), hasShield());
-        return armorClass.effectiveValue(computed);
+        return armorClass.getOverride() != null ? armorClass.getOverride() : computed;
     }
 }

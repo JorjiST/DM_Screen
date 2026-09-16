@@ -29,7 +29,7 @@
 
          Race race = contentLoader.loadRace(racePath);
          CharacterClass characterClass = contentLoader.loadClass(classPath);
-         Hero hero = new Hero(race.id(), characterClass.id(), new Speed(race.baseSpeed()), 1, false);
+         Hero hero = new Hero("Alan", race.id(), characterClass.id(), new Speed(race.baseSpeed()), 1, false);
 
          modifierEngine.apply(hero, race.modifiers());
          modifierEngine.apply(hero, characterClass.modifiers());

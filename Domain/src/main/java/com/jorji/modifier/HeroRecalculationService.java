@@ -32,6 +32,7 @@ public class HeroRecalculationService {
             score.resetToBase();
         }
         hero.getSpeed().resetToBase();
+        hero.getArmorClass().resetToBase();
         // hero.getSkillProficienciesFromContent().clear();      — после разделения Set (roadmap, шаг 5, ещё не сделан)
         // hero.getSavingThrowProficienciesFromContent().clear();
     }
