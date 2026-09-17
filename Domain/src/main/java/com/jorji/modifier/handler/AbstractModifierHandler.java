@@ -10,5 +10,4 @@ public abstract class AbstractModifierHandler implements ModifierHandler {
     protected AbstractModifierHandler(String prefix){
         this.prefix = prefix;
     }
-
 }
