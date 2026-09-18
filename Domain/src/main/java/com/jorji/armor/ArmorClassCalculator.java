@@ -1,6 +1,6 @@
 package com.jorji.armor;
 
-import com.jorji.content.ArmorCategory;
+import com.jorji.content.enums.ArmorCategory;
 import com.jorji.ability.Ability;
 import com.jorji.content.Armor;
 import com.jorji.hero.Hero;

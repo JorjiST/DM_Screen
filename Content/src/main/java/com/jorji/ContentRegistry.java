@@ -3,6 +3,7 @@ package com.jorji;
 import com.jorji.content.CharacterClass;
 import com.jorji.content.Item;
 import com.jorji.content.Race;
+import com.jorji.content.Spell;
 import com.jorji.loader.ContentLoader;
 
 import lombok.extern.log4j.Log4j;
@@ -20,6 +21,7 @@ public class ContentRegistry {
     private final Map<String, Race> races = new HashMap<>();
     private final Map<String, Item> items = new HashMap<>();
     private final Map<String, CharacterClass> classes = new HashMap<>();
+    private final Map<String, Spell> spells = new HashMap<>();
 
     public void loadAll(ContentLoader loader, Path rootDirectory) throws IOException {
         log.info("Loading races, classes, and items from: " + rootDirectory);
@@ -31,6 +33,9 @@ public class ContentRegistry {
 
         loadDirectory(rootDirectory.resolve("items"),
                 path -> register(items, loader.loadItem(path), Item::getId));
+
+        loadDirectory(rootDirectory.resolve("spells"),
+                path -> register(spells, loader.loadSpell(path), Spell::id));
     }
 
     private void loadDirectory(Path directory, PathHandler handler) throws IOException {
@@ -59,6 +64,10 @@ public class ContentRegistry {
 
     public Item getItem(String id) {
         return require(items, id, "item");
+    }
+
+    public Spell getSpell(String id){
+        return require(spells, id, "spell");
     }
 
     private <T> T require(Map<String, T> map, String id, String kind) {

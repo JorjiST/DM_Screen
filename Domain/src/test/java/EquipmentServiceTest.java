@@ -11,7 +11,7 @@ import com.jorji.ContentRegistry;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.*;
 import com.jorji.ability.Ability;
-import com.jorji.content.EquipmentSlot;
+import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.hero.Hero;
 import com.jorji.loader.ContentLoader;
 import com.jorji.modifier.handler.DefaultModifierHandlers;

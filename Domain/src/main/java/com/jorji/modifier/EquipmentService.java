@@ -1,7 +1,7 @@
 package com.jorji.modifier;
 
 import com.jorji.ContentRegistry;
-import com.jorji.content.EquipmentSlot;
+import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.content.Item;
 import com.jorji.hero.Hero;
 import lombok.AllArgsConstructor;

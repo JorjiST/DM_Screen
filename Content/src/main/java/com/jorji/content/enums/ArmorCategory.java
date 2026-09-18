@@ -1,4 +1,4 @@
-package com.jorji.content;
+package com.jorji.content.enums;
 
 public enum ArmorCategory {
     LIGHT,

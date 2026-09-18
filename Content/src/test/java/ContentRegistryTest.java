@@ -1,7 +1,7 @@
 import com.jorji.ContentRegistry;
 import com.jorji.Operation;
 import com.jorji.content.CharacterClass;
-import com.jorji.content.EquipmentSlot;
+import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.content.Item;
 import com.jorji.content.Race;
 import com.jorji.loader.ContentLoader;

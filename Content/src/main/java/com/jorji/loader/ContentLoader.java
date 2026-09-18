@@ -2,10 +2,7 @@ package com.jorji.loader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.jorji.content.Armor;
-import com.jorji.content.CharacterClass;
-import com.jorji.content.Item;
-import com.jorji.content.Race;
+import com.jorji.content.*;
 
 import lombok.extern.log4j.Log4j;
 
@@ -35,5 +32,10 @@ public class ContentLoader {
     public Armor loadArmor(Path jsonArmor) throws IOException {
         log.info("Loading armor from: " + jsonArmor);
         return mapper.readValue(jsonArmor.toFile(), Armor.class);
+    }
+
+    public Spell loadSpell(Path jsonSpell) throws IOException {
+        log.info("Loading spell from: " + jsonSpell);
+        return mapper.readValue(jsonSpell.toFile(), Spell.class);
     }
 }

@@ -1,5 +1,7 @@
 package com.jorji.content;
 
+import com.jorji.content.enums.ArmorCategory;
+import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.modifier.Modifier;
 import lombok.Getter;
 

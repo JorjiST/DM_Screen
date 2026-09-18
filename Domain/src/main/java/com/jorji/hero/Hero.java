@@ -1,6 +1,7 @@
 package com.jorji.hero;
 
-import com.jorji.content.EquipmentSlot;
+import com.jorji.content.Spell;
+import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.content.Item;
 import com.jorji.ability.*;
 import com.jorji.content.Armor;
@@ -29,6 +30,7 @@ public class Hero {
     private final Set<Ability> savingThrowProficiencies = EnumSet.noneOf(Ability.class); //Спасброски
     private final Map<EquipmentSlot, Item> equippedItems = new HashMap<>();
     private final List<Item> inventory = new ArrayList<>();
+    private final Set<Spell> spells = new HashSet<>();
 
     {
         abilityScores.put(Ability.CHARISMA, new AbilityScore(0));
@@ -69,6 +71,14 @@ public class Hero {
 
     public void removeItemToInventory(Item item) {
         inventory.remove(item);
+    }
+
+    public void grandSpell(Spell spell){
+        spells.add(spell);
+    }
+
+    public void revokeSpell(Spell spell){
+        spells.remove(spell);
     }
 
     public void equipItem(Item item, EquipmentSlot equipmentSlot) {
