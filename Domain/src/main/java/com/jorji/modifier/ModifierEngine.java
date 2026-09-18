@@ -1,11 +1,9 @@
-package com.jorji;
+package com.jorji.modifier;
 
 import com.jorji.hero.Hero;
 import com.jorji.modifier.handler.AbstractModifierHandler;
 
 import lombok.extern.log4j.Log4j;
-
-import com.jorji.modifier.Modifier;
 
 import java.util.HashMap;
 import java.util.List;

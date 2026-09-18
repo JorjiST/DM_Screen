@@ -2,7 +2,7 @@
  import com.jorji.ability.Skill;
  import com.jorji.content.CharacterClass;
  import com.jorji.hero.Hero;
- import com.jorji.ModifierEngine;
+ import com.jorji.modifier.ModifierEngine;
  import com.jorji.content.Race;
  import com.jorji.loader.ContentLoader;
  import com.jorji.modifier.handler.DefaultModifierHandlers;

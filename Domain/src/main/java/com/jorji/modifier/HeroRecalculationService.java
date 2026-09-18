@@ -1,6 +1,5 @@
 package com.jorji.modifier;
 
-import com.jorji.ModifierEngine;
 import com.jorji.ability.AbilityScore;
 import com.jorji.hero.Hero;
 

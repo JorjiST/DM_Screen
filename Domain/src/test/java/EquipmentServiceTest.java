@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.jorji.ContentRegistry;
-import com.jorji.ModifierEngine;
+import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.*;
 import com.jorji.ability.Ability;
 import com.jorji.content.EquipmentSlot;

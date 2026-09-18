@@ -1,7 +1,7 @@
 import com.jorji.ability.Ability;
 import com.jorji.ability.AbilityScore;
 import com.jorji.hero.Hero;
-import com.jorji.ModifierEngine;
+import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.handler.AbilityModifierHandler;
 import com.jorji.modifier.Modifier;
 import com.jorji.Operation;
