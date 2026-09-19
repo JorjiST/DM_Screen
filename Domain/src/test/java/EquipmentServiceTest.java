@@ -45,15 +45,13 @@ public class EquipmentServiceTest {
     @Test
     void modifiersApplyAfterEquip(){
         assertEquals(0, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
-
-        equipmentService.equip(hero, contentRegistry.getItem("ring"), EquipmentSlot.HAND);
-
+        equipmentService.equip(hero, "ring", EquipmentSlot.HAND);
         assertEquals(2, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
     }
 
     @Test
     void modifiersRemoveAfterUnequip() {
-        equipmentService.equip(hero, contentRegistry.getItem("ring"), EquipmentSlot.HAND);
+        equipmentService.equip(hero, "ring", EquipmentSlot.HAND);
         assertEquals(2, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
         equipmentService.unequip(hero, EquipmentSlot.HAND);
         assertEquals(0, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());

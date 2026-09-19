@@ -81,11 +81,12 @@ public class Hero {
         spells.remove(spell);
     }
 
-    public void equipItem(Item item, EquipmentSlot equipmentSlot) {
-        if (equippedItems.containsKey(equipmentSlot)) {
-            inventory.add(equippedItems.get(equipmentSlot));
+    public void equipItem(Item item) {
+        EquipmentSlot slot = item.getEquipmentSlot();
+        if (equippedItems.containsKey(slot)) {
+            inventory.add(equippedItems.get(slot));
         }
-        equippedItems.put(equipmentSlot, item);
+        equippedItems.put(slot, item);
         inventory.remove(item);
     }
 

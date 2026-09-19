@@ -1,7 +1,6 @@
 package com.jorji.modifier;
 
 import com.jorji.ContentRegistry;
-import com.jorji.content.Spell;
 import com.jorji.hero.Hero;
 import lombok.AllArgsConstructor;
 

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Path;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContentLoaderTest {

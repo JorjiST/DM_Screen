@@ -14,8 +14,9 @@ public class EquipmentService {
     private final HeroRecalculationService recalculationService;
     private final ContentRegistry contentRegistry;
 
-    public void equip(Hero hero, Item item, EquipmentSlot slot) {
-        hero.equipItem(item, slot);
+    public void equip(Hero hero, String itemid, EquipmentSlot slot) {
+        Item item = contentRegistry.getItem(itemid);
+        hero.equipItem(item);
         recalculate(hero);
     }
 
