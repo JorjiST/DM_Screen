@@ -1,6 +1,8 @@
 package com.jorji.content;
 
-import com.jorji.content.enums.SpellComponents;
+import com.jorji.content.enums.SpellComponent;
+
+import java.util.Set;
 
 public record Spell(
         String id,
@@ -10,5 +12,5 @@ public record Spell(
         String distanceInFoots,
         String duration, //Concentration, Immediately
         int level,
-        SpellComponents components
+        Set<SpellComponent> components
 ){}
