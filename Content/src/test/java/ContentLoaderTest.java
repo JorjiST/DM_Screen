@@ -1,3 +1,4 @@
+import com.jorji.content.Armor;
 import com.jorji.content.CharacterClass;
 import com.jorji.content.Race;
 import com.jorji.content.Spell;
@@ -47,5 +48,15 @@ public class ContentLoaderTest {
         assertEquals("Аура живучести", spell.name());
         assertEquals(1, spell.level());
         assertEquals(Set.of(SpellComponent.VERBAL, SpellComponent.SOMATIC), spell.components());
+    }
+
+    @Test
+    void loadsArmorFromJson() throws Exception {
+        ContentLoader contentLoader = new ContentLoader();
+        Path path = Path.of(getClass().getResource("/items/armor.json").toURI());
+
+        Armor armor = contentLoader.loadArmor(path);
+        assertEquals("броня", armor.getName());
+        assertEquals("ability.strength", armor.getModifiers().getFirst().target());
     }
 }

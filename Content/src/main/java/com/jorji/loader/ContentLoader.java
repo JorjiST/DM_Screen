@@ -31,6 +31,7 @@ public class ContentLoader {
 
     public Armor loadArmor(Path jsonArmor) throws IOException {
         log.info("Loading armor from: " + jsonArmor);
+        Armor armor = mapper.readValue(jsonArmor.toFile(), Armor.class);
         return mapper.readValue(jsonArmor.toFile(), Armor.class);
     }
 

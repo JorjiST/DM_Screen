@@ -1,10 +1,8 @@
 import com.jorji.ContentRegistry;
 import com.jorji.Operation;
-import com.jorji.content.CharacterClass;
-import com.jorji.content.Spell;
+import com.jorji.content.*;
+import com.jorji.content.enums.ArmorCategory;
 import com.jorji.content.enums.EquipmentSlot;
-import com.jorji.content.Item;
-import com.jorji.content.Race;
 import com.jorji.content.enums.SpellComponent;
 import com.jorji.loader.ContentLoader;
 import com.jorji.modifier.Modifier;
@@ -66,10 +64,20 @@ public class ContentRegistryTest {
                 Set.of(SpellComponent.VERBAL, SpellComponent.SOMATIC)
         );
 
+        Armor testArmor = new Armor(
+                "armor",
+                "броня",
+                "Дает +2 к силе",
+                List.of(new Modifier("ability.strength", Operation.ADD, 2)),
+                ArmorCategory.LIGHT,
+                3,
+                0
+        );
+
         assertEquals(testCharacterClass, contentRegistry.getCharacterClass("fighter"));
         assertEquals(testCharacterRace, contentRegistry.getRace("elf"));
         assertEquals(testItem, contentRegistry.getItem("ring"));
         assertEquals(testSpell, contentRegistry.getSpell("divineFavor"));
-
+        assertEquals(testArmor, contentRegistry.getItem("armor"));
     }
 }

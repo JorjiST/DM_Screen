@@ -36,6 +36,9 @@ public class ContentRegistry {
 
         loadDirectory(rootDirectory.resolve("spells"),
                 path -> register(spells, loader.loadSpell(path), Spell::id));
+
+        loadDirectory(rootDirectory.resolve("items"),
+                path -> register(items, loader.loadArmor(path), Item::getId));
     }
 
     private void loadDirectory(Path directory, PathHandler handler) throws IOException {
