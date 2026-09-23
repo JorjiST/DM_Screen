@@ -1,6 +1,6 @@
 package com.jorji.modifier;
 
-import com.jorji.Operation;
+import com.jorji.content.enums.Operation;
 
 public final class ModifierMath {
     private ModifierMath() {}

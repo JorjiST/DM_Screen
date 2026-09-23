@@ -3,7 +3,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.util.List;
 
+import com.jorji.armor.ArmorClassCalculator;
+import com.jorji.content.Armor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,26 +43,34 @@ public class EquipmentServiceTest {
         contentRegistry.loadAll(contentLoader, rootPath);
 
         hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, false);
+        recalculationService.recalculate(hero,
+                List.of(contentRegistry.getRace(hero.getRaceId()), contentRegistry.getCharacterClass(hero.getClassId())));
     }
 
     @Test
     void modifiersApplyAfterEquip(){
-        assertEquals(0, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
+        int startedScore = hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue();
+        int bonusScore = (Integer) contentRegistry.getItem("ring").modifiers().getFirst().value();
         equipmentService.equip(hero, "ring");
-        assertEquals(2, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
+        assertEquals(startedScore + bonusScore, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
     }
 
     @Test
     void modifiersRemoveAfterUnequip() {
-        equipmentService.equip(hero, "ring");
-        assertEquals(2, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
+        modifiersApplyAfterEquip();
+        int startedScore = hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue();
+        int bonusScore = (Integer) contentRegistry.getItem("ring").modifiers().getFirst().value();
         equipmentService.unequip(hero, EquipmentSlot.HAND);
-        assertEquals(0, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
+        assertEquals(startedScore - bonusScore, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
     }
 
     @Test
     void armorModifiers(){
+        ArmorClassCalculator calculator = new ArmorClassCalculator();
+        Armor armor = (Armor) contentRegistry.getItem("armor");
+        int armorClassBonus = armor.getBaseArmorClass();
+        int dexHeroModifier = hero.getAbilityModifier(Ability.DEXTERITY);
         equipmentService.equip(hero, "armor");
-        assertEquals(102, hero.getAbilityScores().get(Ability.STRENGTH).effectiveValue());
+        assertEquals(dexHeroModifier + armorClassBonus, hero.getArmorClassValue(calculator));
     }
 }

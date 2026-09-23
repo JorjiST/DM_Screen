@@ -1,5 +1,5 @@
 import com.jorji.modifier.ModifierEngine;
-import com.jorji.Operation;
+import com.jorji.content.enums.Operation;
 import com.jorji.ability.Ability;
 import com.jorji.ability.AbilityScore;
 import com.jorji.hero.Hero;

@@ -4,7 +4,7 @@ import com.jorji.hero.Hero;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.handler.AbilityModifierHandler;
 import com.jorji.modifier.Modifier;
-import com.jorji.Operation;
+import com.jorji.content.enums.Operation;
 
 import com.jorji.modifier.handler.SpeedModifierHandler;
 

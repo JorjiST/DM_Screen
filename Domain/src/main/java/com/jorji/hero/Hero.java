@@ -33,12 +33,12 @@ public class Hero {
     private final Set<Spell> spells = new HashSet<>();
 
     {
-        abilityScores.put(Ability.CHARISMA, new AbilityScore(0));
-        abilityScores.put(Ability.CONSTITUTION, new AbilityScore(0));
-        abilityScores.put(Ability.DEXTERITY, new AbilityScore(0));
-        abilityScores.put(Ability.STRENGTH, new AbilityScore(0));
-        abilityScores.put(Ability.WISDOM, new AbilityScore(0));
-        abilityScores.put(Ability.INTELLIGENCE, new AbilityScore(0));
+        abilityScores.put(Ability.CHARISMA, new AbilityScore(10));
+        abilityScores.put(Ability.CONSTITUTION, new AbilityScore(10));
+        abilityScores.put(Ability.DEXTERITY, new AbilityScore(10));
+        abilityScores.put(Ability.STRENGTH, new AbilityScore(10));
+        abilityScores.put(Ability.WISDOM, new AbilityScore(10));
+        abilityScores.put(Ability.INTELLIGENCE, new AbilityScore(10));
     }
 
     public void grantSkillProficiency(Skill skill) {

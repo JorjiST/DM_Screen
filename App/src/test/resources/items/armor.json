@@ -6,6 +6,6 @@
     {"target": "ability.strength", "operation": "ADD", "value": 2 }
   ],
   "armorCategory": "LIGHT",
-  "baseArmorClass": 11,
+  "baseArmorClass": 3,
   "minStrength": 0
 }

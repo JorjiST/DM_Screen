@@ -1,5 +1,5 @@
 import com.jorji.ContentRegistry;
-import com.jorji.Operation;
+import com.jorji.content.enums.Operation;
 import com.jorji.content.*;
 import com.jorji.content.enums.ArmorCategory;
 import com.jorji.content.enums.EquipmentSlot;
