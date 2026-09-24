@@ -9,6 +9,7 @@ public final class DefaultModifierHandlers {
                 new SpeedModifierHandler(),
                 new ArmorClassModifierHandler(),
                 new SavingThrowModifierHandler(),
-                new SkillModifierHandler());
+                new SkillModifierHandler(),
+                new HitPointModifierHandler());
     }
 }

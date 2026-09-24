@@ -7,6 +7,7 @@ import com.jorji.ability.*;
 import com.jorji.content.Armor;
 import com.jorji.armor.ArmorClass;
 import com.jorji.armor.ArmorClassCalculator;
+import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Hero {
     private String classId;
     private Speed speed;
     private int level;
+    private HitPoint hitPoint;
     private boolean hasShield;
     private final ArmorClass armorClass = new ArmorClass();
     private final Map<Ability, AbilityScore> abilityScores = new EnumMap<>(Ability.class);

@@ -8,6 +8,7 @@ import com.jorji.content.enums.Operation;
 
 import com.jorji.modifier.handler.SpeedModifierHandler;
 
+import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ public class ModifierEngineTest {
 
     @Test
     void applyModifier(){
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(1), 1, false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(1), 1,  new HitPoint(0), false);
         hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(1));
 
         ModifierEngine modifierEngine = new ModifierEngine();
@@ -54,7 +55,7 @@ public class ModifierEngineTest {
         AbilityScore score = new AbilityScore(10);
         score.setOverride(15);
 
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
         hero.getAbilityScores().put(Ability.CHARISMA, score);
 
         ModifierEngine engine = new ModifierEngine();

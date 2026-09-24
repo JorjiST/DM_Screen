@@ -4,6 +4,7 @@ import com.jorji.loader.ContentLoader;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.SpellService;
 import com.jorji.modifier.handler.DefaultModifierHandlers;
+import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,7 @@ public class SpellServiceTest {
         Path rootPath = path.getParent();
         contentRegistry.loadAll(contentLoader, rootPath);
 
-        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, false);
+        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
     }
 
     @Test

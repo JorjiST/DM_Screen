@@ -8,6 +8,7 @@
  import com.jorji.content.Race;
  import com.jorji.loader.ContentLoader;
  import com.jorji.modifier.handler.DefaultModifierHandlers;
+ import com.jorji.stat.HitPoint;
  import com.jorji.stat.Speed;
  import org.junit.jupiter.api.Test;
 
@@ -39,7 +40,7 @@
 
          Race race = contentRegistry.getRace("elf");
          CharacterClass characterClass = contentRegistry.getCharacterClass("fighter");
-         Hero hero = new Hero("Alan", race.id(), characterClass.id(), new Speed(race.baseSpeed()), 1, false);
+         Hero hero = new Hero("Alan", race.id(), characterClass.id(), new Speed(race.baseSpeed()), 1,  new HitPoint(0),false);
 
          int startedStrengthValue = hero.getAbilityScores().get(Ability.STRENGTH).effectiveValue();
          int startedDexterityValue = hero.getAbilityScores().get(Ability.DEXTERITY).effectiveValue();

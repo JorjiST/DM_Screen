@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.jorji.armor.ArmorClassCalculator;
 import com.jorji.content.Armor;
+import com.jorji.stat.HitPoint;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +43,7 @@ public class EquipmentServiceTest {
         Path rootPath = path.getParent();
         contentRegistry.loadAll(contentLoader, rootPath);
 
-        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, false);
+        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
         recalculationService.recalculate(hero,
                 List.of(contentRegistry.getRace(hero.getRaceId()), contentRegistry.getCharacterClass(hero.getClassId())));
     }
