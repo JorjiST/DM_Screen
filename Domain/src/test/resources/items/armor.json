@@ -1,4 +1,5 @@
 {
+  "type": "armor",
   "id": "armor",
   "name": "броня",
   "description": "Дает +2 к силе",

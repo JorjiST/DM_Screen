@@ -2,12 +2,19 @@ package com.jorji.content;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.modifier.ModifierSource;
 import com.jorji.modifier.Modifier;
 import lombok.Getter;
 import java.util.List;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Item.class, name = "item"),
+        @JsonSubTypes.Type(value = Armor.class, name = "armor")
+})
 @Getter
 public class Item implements ModifierSource {
     private final String id;

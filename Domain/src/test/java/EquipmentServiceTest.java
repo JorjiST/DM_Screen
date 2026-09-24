@@ -4,26 +4,22 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.List;
-
 import com.jorji.armor.ArmorClassCalculator;
 import com.jorji.content.Armor;
 import com.jorji.stat.HitPoint;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.jorji.ContentRegistry;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.*;
 import com.jorji.ability.Ability;
 import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.hero.Hero;
-import com.jorji.loader.ContentLoader;
 import com.jorji.modifier.handler.DefaultModifierHandlers;
 import com.jorji.stat.Speed;
 
 public class EquipmentServiceTest {
 
-    private ContentLoader contentLoader = new ContentLoader();
     private EquipmentService equipmentService;
     private ContentRegistry contentRegistry;
     private Hero hero;
@@ -40,8 +36,8 @@ public class EquipmentServiceTest {
         equipmentService = new EquipmentService(recalculationService, contentRegistry);
         
         Path path = Path.of(getClass().getResource("/classes").toURI());
-        Path rootPath = path.getParent();
-        contentRegistry.loadAll(contentLoader, rootPath);
+        Path root = path.getParent();
+        contentRegistry.loadAll(root);
 
         hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
         recalculationService.recalculate(hero,

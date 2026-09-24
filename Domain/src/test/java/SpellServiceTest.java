@@ -8,7 +8,6 @@ import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -34,7 +33,7 @@ public class SpellServiceTest {
 
         Path path = Path.of(getClass().getResource("/spells").toURI());
         Path rootPath = path.getParent();
-        contentRegistry.loadAll(contentLoader, rootPath);
+        contentRegistry.loadAll(rootPath);
 
         hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
     }

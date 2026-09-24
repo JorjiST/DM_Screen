@@ -1,0 +1,8 @@
+{
+  "id": "elf",
+  "name": "Эльф",
+  "baseSpeed": 30,
+  "modifiers": [
+    { "target": "ability.dexterity", "operation": "ADD", "value": 2 }
+  ]
+}

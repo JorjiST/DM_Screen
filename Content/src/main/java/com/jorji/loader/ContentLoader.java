@@ -29,12 +29,6 @@ public class ContentLoader {
         return mapper.readValue(jsonItem.toFile(), Item.class);
     }
 
-    public Armor loadArmor(Path jsonArmor) throws IOException {
-        log.info("Loading armor from: " + jsonArmor);
-        Armor armor = mapper.readValue(jsonArmor.toFile(), Armor.class);
-        return mapper.readValue(jsonArmor.toFile(), Armor.class);
-    }
-
     public Spell loadSpell(Path jsonSpell) throws IOException {
         log.info("Loading spell from: " + jsonSpell);
         return mapper.readValue(jsonSpell.toFile(), Spell.class);

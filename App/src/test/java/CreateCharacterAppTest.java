@@ -6,12 +6,10 @@
  import com.jorji.modifier.HeroRecalculationService;
  import com.jorji.modifier.ModifierEngine;
  import com.jorji.content.Race;
- import com.jorji.loader.ContentLoader;
  import com.jorji.modifier.handler.DefaultModifierHandlers;
  import com.jorji.stat.HitPoint;
  import com.jorji.stat.Speed;
  import org.junit.jupiter.api.Test;
-
  import java.io.IOException;
  import java.net.URISyntaxException;
  import java.nio.file.Path;
@@ -24,14 +22,13 @@
 
      @Test
      void readAndCreateAndAddModifierTest() throws IOException, URISyntaxException {
-         ContentLoader contentLoader = new ContentLoader();
          ModifierEngine modifierEngine = new ModifierEngine();
          DefaultModifierHandlers handlers = new DefaultModifierHandlers();
          ContentRegistry contentRegistry = new ContentRegistry();
          HeroRecalculationService heroRecalculationService = new HeroRecalculationService(modifierEngine);
          Path path = Path.of(getClass().getResource("/classes").toURI());
          Path rootPath = path.getParent();
-         contentRegistry.loadAll(contentLoader, rootPath);
+         contentRegistry.loadAll(rootPath);
 
          modifierEngine.registerModifierHandler(handlers.all());
 
