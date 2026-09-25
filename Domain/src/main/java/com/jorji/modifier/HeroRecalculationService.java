@@ -3,18 +3,16 @@ package com.jorji.modifier;
 import com.jorji.ability.AbilityScore;
 import com.jorji.hero.Hero;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 import java.util.List;
+import java.util.Set;
 
-//Вызывается в модуле App, в UI
 @Log4j
+@AllArgsConstructor
 public class HeroRecalculationService {
     private final ModifierEngine modifierEngine;
-
-    public HeroRecalculationService(ModifierEngine modifierEngine) {
-        this.modifierEngine = modifierEngine;
-    }
 
     public void recalculate(Hero hero, List<ModifierSource> activeSources) {
         log.info("Recalculating hero: " + hero.getName() + " with active sources: " + activeSources);

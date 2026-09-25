@@ -33,4 +33,9 @@ public class ContentLoader {
         log.info("Loading spell from: " + jsonSpell);
         return mapper.readValue(jsonSpell.toFile(), Spell.class);
     }
+
+    public Peculiarity loadPeculiarity(Path jsonPeculiarity) throws IOException{
+        log.info("Loading peculiarity from: " + jsonPeculiarity);
+        return mapper.readValue(jsonPeculiarity.toFile(), Peculiarity.class);
+    }
 }

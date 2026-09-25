@@ -1,0 +1,7 @@
+{
+  "id": "peculiarity",
+  "description": "Вы получаете +2 к харизме",
+  "modifiers": [
+    {"target": "ability.charisma", "operation": "ADD", "value": 2}
+  ]
+}
