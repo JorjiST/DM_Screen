@@ -13,7 +13,8 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Item.class, name = "item"),
-        @JsonSubTypes.Type(value = Armor.class, name = "armor")
+        @JsonSubTypes.Type(value = Armor.class, name = "armor"),
+        @JsonSubTypes.Type(value = Weapon.class, name = "weapon")
 })
 @Getter
 public class Item implements ModifierSource {
