@@ -8,11 +8,11 @@ import lombok.AllArgsConstructor;
 public class SpellService {
     private final ContentRegistry contentRegistry;
 
-    public void grantSpell(Hero hero, String spellId){
+    public void grant(Hero hero, String spellId){
         hero.grandSpell(contentRegistry.getSpell(spellId));
     }
 
-    public void revokeSpell(Hero hero, String spellId){
+    public void revoke(Hero hero, String spellId){
         hero.revokeSpell(contentRegistry.getSpell(spellId));
     }
 }

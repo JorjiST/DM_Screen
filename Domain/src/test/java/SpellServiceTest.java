@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class SpellServiceTest {
 
-    private final ContentLoader contentLoader = new ContentLoader();
     private ContentRegistry contentRegistry;
     private Hero hero;
 
@@ -41,7 +40,7 @@ public class SpellServiceTest {
     @Test
     void grantsSpell(){
         SpellService spellService = new SpellService(contentRegistry);
-        spellService.grantSpell(hero, "divineFavor");
+        spellService.grant(hero, "divineFavor");
 
         assertEquals(Set.of(contentRegistry.getSpell("divineFavor")), hero.getSpells());
     }
@@ -49,7 +48,7 @@ public class SpellServiceTest {
     @Test
     void revokesSpell(){
         SpellService spellService = new SpellService(contentRegistry);
-        spellService.revokeSpell(hero, "divineFavor");
+        spellService.revoke(hero, "divineFavor");
 
         assertFalse(hero.getSpells().contains(contentRegistry.getSpell("divineFavor")));
     }
