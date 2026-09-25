@@ -34,7 +34,6 @@ class HeroRecalculationServiceTest {
     @DisplayName("appliesModifiersFromActiveSources")
     void appliesModifiersFromActiveSources() {
         Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1, new HitPoint(0),false);
-        hero.getAbilityScores().put(Ability.DEXTERITY, new AbilityScore(10));
 
         ModifierSource raceSource = new TestSource(List.of(
                 new Modifier("ability.dexterity", Operation.ADD, 2)
@@ -49,7 +48,6 @@ class HeroRecalculationServiceTest {
     @DisplayName("recalculateIsReversibleWhenSourceIsRemoved")
     void recalculateIsReversibleWhenSourceIsRemoved() {
         Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1, new HitPoint(0), false);
-        hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(10));
 
         ModifierSource ring = new TestSource(List.of(
                 new Modifier("ability.charisma", Operation.ADD, 1)
@@ -67,9 +65,8 @@ class HeroRecalculationServiceTest {
     @DisplayName("neverTouchesOverride")
     void neverTouchesOverride() {
         Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1,  new HitPoint(0), false);
-        AbilityScore charisma = new AbilityScore(10);
+        AbilityScore charisma = hero.getAbilityScores().get(Ability.CHARISMA);
         charisma.setOverride(99);
-        hero.getAbilityScores().put(Ability.CHARISMA, charisma);
 
         ModifierSource source = new TestSource(List.of(
                 new Modifier("ability.charisma", Operation.ADD, 5)

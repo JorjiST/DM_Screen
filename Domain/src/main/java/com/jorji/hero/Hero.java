@@ -26,22 +26,20 @@ public class Hero {
     private int level;
     private HitPoint hitPoint;
     private boolean hasShield;
-    private final ArmorClass armorClass = new ArmorClass();
-    private final Map<Ability, AbilityScore> abilityScores = new EnumMap<>(Ability.class);
+    private final ArmorClass armorClass = new ArmorClass(0);
     private final Set<Skill> skillProficiencies = EnumSet.noneOf(Skill.class);  //Навыки
     private final Set<Ability> savingThrowProficiencies = EnumSet.noneOf(Ability.class); //Спасброски
-    private final Map<EquipmentSlot, Item> equippedItems = new HashMap<>();
+    private final Map<EquipmentSlot, Item> equippedItems = new EnumMap<>(EquipmentSlot.class);
     private final List<Item> inventory = new ArrayList<>();
     private final Set<Spell> spells = new HashSet<>();
-
-    {
-        abilityScores.put(Ability.CHARISMA, new AbilityScore(10));
-        abilityScores.put(Ability.CONSTITUTION, new AbilityScore(10));
-        abilityScores.put(Ability.DEXTERITY, new AbilityScore(10));
-        abilityScores.put(Ability.STRENGTH, new AbilityScore(10));
-        abilityScores.put(Ability.WISDOM, new AbilityScore(10));
-        abilityScores.put(Ability.INTELLIGENCE, new AbilityScore(10));
-    }
+    private final Map<Ability, AbilityScore> abilityScores = Map.of(
+            Ability.CHARISMA, new AbilityScore(10),
+            Ability.CONSTITUTION, new AbilityScore(10),
+            Ability.DEXTERITY, new AbilityScore(10),
+            Ability.STRENGTH, new AbilityScore(10),
+            Ability.WISDOM, new AbilityScore(10),
+            Ability.INTELLIGENCE, new AbilityScore(10)
+    );
 
     public void grantSkillProficiency(Skill skill) {
         skillProficiencies.add(skill);

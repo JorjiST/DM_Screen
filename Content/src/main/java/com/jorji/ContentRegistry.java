@@ -68,13 +68,13 @@ public class ContentRegistry {
         return require(items, id, "item", Item.class);
     }
 
-    public Spell getSpell(String id){
+    public Spell getSpell(String id) {
         return require(spells, id, "spell", Spell.class);
     }
 
     private <T> T require(Map<String, T> map, String id, String kind, Class<T> type) {
         T value = map.get(id);
-        if(value != null) return value;
+        if (value != null) return value;
         else {
             value = tryLoadContent(id, kind, type);
             if (value != null) {
@@ -95,13 +95,14 @@ public class ContentRegistry {
     }
 
     private <T> T tryLoadContent(String id, String kind, Class<T> type) {
+        final String json = ".json";
         Object o = null;
         try {
             o = switch (kind) {
-                case "class" -> loader.loadClass(resolveResourcePath("classes/" + id + ".json"));
-                case "race" -> loader.loadRace(resolveResourcePath("races/" + id + ".json"));
-                case "item" -> loader.loadItem(resolveResourcePath("items/" + id + ".json"));
-                case "spell" -> loader.loadSpell(resolveResourcePath("spells/" + id + ".json"));
+                case "class" -> loader.loadClass(resolveResourcePath("classes/" + id + json));
+                case "race" -> loader.loadRace(resolveResourcePath("races/" + id + json));
+                case "item" -> loader.loadItem(resolveResourcePath("items/" + id + json));
+                case "spell" -> loader.loadSpell(resolveResourcePath("spells/" + id + json));
                 default -> throw new IllegalArgumentException("Неизвестный тип контента: " + kind);
             };
         } catch (FileNotFoundException | IllegalArgumentException e) {

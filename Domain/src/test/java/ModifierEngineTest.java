@@ -19,7 +19,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 
-public class ModifierEngineTest {
+class ModifierEngineTest {
 
     @Test
     void shouldRegisterItselfInEngine() {
@@ -32,7 +32,6 @@ public class ModifierEngineTest {
     @Test
     void applyModifier(){
         Hero hero = new Hero("Alan", "elf", "fighter", new Speed(1), 1,  new HitPoint(0), false);
-        hero.getAbilityScores().put(Ability.CHARISMA, new AbilityScore(1));
 
         ModifierEngine modifierEngine = new ModifierEngine();
         AbilityModifierHandler modifierHandler = new AbilityModifierHandler();
@@ -40,7 +39,7 @@ public class ModifierEngineTest {
         modifierEngine.registerModifierHandler(modifierHandler);
         modifierEngine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
 
-        assertEquals(11, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
+        assertEquals(20, hero.getAbilityScores().get(Ability.CHARISMA).effectiveValue());
     }
 
     @Test
@@ -52,15 +51,12 @@ public class ModifierEngineTest {
 
     @Test
     void modifierEngineNeverTouchesOverride() {
-        AbilityScore score = new AbilityScore(10);
-        score.setOverride(15);
-
         Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
-        hero.getAbilityScores().put(Ability.CHARISMA, score);
-
+        AbilityScore score = hero.getAbilityScores().get(Ability.CHARISMA);
         ModifierEngine engine = new ModifierEngine();
         AbilityModifierHandler modifierHandler = new AbilityModifierHandler();
 
+        score.setOverride(15);
         engine.registerModifierHandler(modifierHandler);
         engine.apply(hero, List.of(new Modifier("ability.charisma", Operation.ADD, 10)));
 

@@ -7,10 +7,6 @@ import lombok.Setter;
 @Setter
 public class ArmorClass extends ComputedStat {
 
-    public ArmorClass() {
-        super(0);
-    }
-
     public ArmorClass(int base) {
         super(base);
     }
