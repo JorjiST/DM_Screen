@@ -24,6 +24,7 @@ public class ContentRegistry {
     private final Map<String, CharacterClass> classes = new HashMap<>();
     private final Map<String, Spell> spells = new HashMap<>();
     private final Map<String, Peculiarity> peculiarities = new HashMap<>();
+    private final Map<String, Feat> feats = new HashMap<>();
     private final ContentLoader loader = new ContentLoader();
 
     public void loadAll(Path rootDirectory) throws IOException {
@@ -42,6 +43,9 @@ public class ContentRegistry {
 
         loadDirectory(rootDirectory.resolve("peculiarities"),
                 path -> register(peculiarities, loader.loadPeculiarity(path), Peculiarity::id));
+
+        loadDirectory(rootDirectory.resolve("feats"),
+                path -> register(feats, loader.loadFeat(path), Feat::id));
     }
 
     private void loadDirectory(Path directory, PathHandler handler) throws IOException {
@@ -80,6 +84,10 @@ public class ContentRegistry {
         return require(peculiarities, id, "peculiarity", Peculiarity.class);
     }
 
+    public Feat getFeat(String id) {
+        return require(feats, id, "feat", Feat.class);
+    }
+
     private <T> T require(Map<String, T> map, String id, String kind, Class<T> type) {
         T value = map.get(id);
         if (value != null) return value;
@@ -112,6 +120,7 @@ public class ContentRegistry {
                 case "item" -> loader.loadItem(resolveResourcePath("items/" + id + json));
                 case "spell" -> loader.loadSpell(resolveResourcePath("spells/" + id + json));
                 case "peculiarity" -> loader.loadPeculiarity(resolveResourcePath("peculiarities/" + id + json));
+                case "feat" -> loader.loadFeat(resolveResourcePath("feats/" + id + json));
                 default -> throw new IllegalArgumentException("Неизвестный тип контента: " + kind);
             };
         } catch (FileNotFoundException | IllegalArgumentException e) {

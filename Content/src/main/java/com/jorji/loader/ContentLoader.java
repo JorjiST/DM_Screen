@@ -34,8 +34,13 @@ public class ContentLoader {
         return mapper.readValue(jsonSpell.toFile(), Spell.class);
     }
 
-    public Peculiarity loadPeculiarity(Path jsonPeculiarity) throws IOException{
+    public Peculiarity loadPeculiarity(Path jsonPeculiarity) throws IOException {
         log.info("Loading peculiarity from: " + jsonPeculiarity);
         return mapper.readValue(jsonPeculiarity.toFile(), Peculiarity.class);
+    }
+
+    public Feat loadFeat(Path jsonFeat) throws IOException {
+        log.info("Loading feat from: " + jsonFeat);
+        return mapper.readValue(jsonFeat.toFile(), Feat.class);
     }
 }
