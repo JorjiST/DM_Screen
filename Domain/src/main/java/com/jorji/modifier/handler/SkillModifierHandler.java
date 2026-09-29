@@ -9,19 +9,18 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class SkillModifierHandler extends AbstractModifierHandler {
 
-    protected SkillModifierHandler() {
+    public SkillModifierHandler() {
         super("skill");
     }
 
     @Override
     public void apply(Hero hero, String remainder, Modifier modifier) {
-        log.info("Applying skill modifier: " + modifier + " to hero: " + hero.getName() + " for skill: " + remainder);
         Skill skill = Skill.valueOf(remainder.toUpperCase());
+
         switch (modifier.operation()) {
-            case GRANT -> hero.getSkillProficiencies().add(skill);
-            case ADD, SET -> {
-                log.error("ADD/SET are not applicable to skill proficiency");
-            }
+            case GRANT -> hero.grantSkillProficiencyFromContent(skill);
+            case ADD, SET -> throw new UnsupportedOperationException(
+                    "ADD/SET are not applicable to skill proficiency");
         }
     }
 }

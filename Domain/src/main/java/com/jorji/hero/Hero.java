@@ -25,8 +25,10 @@ public class Hero {
     private HitPoint hitPoint;
     private boolean hasShield;
     private final ArmorClass armorClass = new ArmorClass(0);
-    private final Set<Skill> skillProficiencies = EnumSet.noneOf(Skill.class);  //Навыки
-    private final Set<Ability> savingThrowProficiencies = EnumSet.noneOf(Ability.class); //Спасброски
+    private final Set<Skill> skillProficienciesFromContent = EnumSet.noneOf(Skill.class);  //Работает только с хэндлерами
+    private final Set<Ability> savingThrowProficienciesFromContent = EnumSet.noneOf(Ability.class);
+    private final Set<Skill> manualSkillProficiencies = EnumSet.noneOf(Skill.class);  //Ручное изменение, по образу с ComputedStat
+    private final Set<Ability> manualSavingThrowProficiencies = EnumSet.noneOf(Ability.class);
     private final Map<EquipmentSlot, Item> equippedItems = new EnumMap<>(EquipmentSlot.class);
     private final List<Item> inventory = new ArrayList<>();
     private final Set<Feat> feats = new HashSet<>();
@@ -41,28 +43,63 @@ public class Hero {
             Ability.INTELLIGENCE, new AbilityScore(10)
     );
 
+
+    // API для Handler`ов
+    public void grantSkillProficiencyFromContent(Skill skill) {
+        skillProficienciesFromContent.add(skill);
+    }
+
+    public void revokeSkillProficiencyFromContent(Skill skill) {
+        skillProficienciesFromContent.remove(skill);
+    }
+
+    public boolean hasSkillProficiencyFromContent(Skill skill) {
+        return skillProficienciesFromContent.contains(skill);
+    }
+
+    public void grantSavingThrowProficiencyFromContent(Ability ability) {
+        savingThrowProficienciesFromContent.add(ability);
+    }
+
+    public void revokeSavingThrowProficiencyFromContent(Ability ability) {
+        savingThrowProficienciesFromContent.remove(ability);
+    }
+
+    public boolean hasSavingThrowProficiencyFromContent(Ability ability) {
+        return savingThrowProficienciesFromContent.contains(ability);
+    }
+
+    public void clearSkillProficienciesFromContent() {
+        skillProficienciesFromContent.clear();
+    }
+
+    public void clearSavingThrowProficienciesFromContent() {
+        savingThrowProficienciesFromContent.clear();
+    }
+
+    // API для ручного изменения ДМ`ом
     public void grantSkillProficiency(Skill skill) {
-        skillProficiencies.add(skill);
+        manualSkillProficiencies.add(skill);
     }
 
     public void revokeSkillProficiency(Skill skill) {
-        skillProficiencies.remove(skill);
-    }
-
-    public boolean hasSkillProficiency(Skill skill) {
-        return skillProficiencies.contains(skill);
+        manualSkillProficiencies.remove(skill);
     }
 
     public void grantSavingThrowProficiency(Ability ability) {
-        savingThrowProficiencies.add(ability);
+        manualSavingThrowProficiencies.add(ability);
     }
 
     public void revokeSavingThrowProficiency(Ability ability) {
-        savingThrowProficiencies.remove(ability);
+        manualSavingThrowProficiencies.remove(ability);
     }
 
     public boolean hasSavingThrowProficiency(Ability ability) {
-        return savingThrowProficiencies.contains(ability);
+        return manualSavingThrowProficiencies.contains(ability) || savingThrowProficienciesFromContent.contains(ability);
+    }
+
+    public boolean hasSkillProficiency(Skill skill) {
+        return manualSkillProficiencies.contains(skill) || skillProficienciesFromContent.contains(skill);
     }
 
     public void addItemToInventory(Item item) {
@@ -119,7 +156,7 @@ public class Hero {
 
     public int getSkillModifier(Skill skill) {
         int abilityModifier = getAbilityModifier(skill.getGoverningAbility());
-        return skillProficiencies.contains(skill)
+        return hasSkillProficiency(skill)
                 ? abilityModifier + ProficiencyBonus.forLevel(level)
                 : abilityModifier;
     }

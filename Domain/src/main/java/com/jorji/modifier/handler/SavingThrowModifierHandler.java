@@ -19,7 +19,7 @@ public class SavingThrowModifierHandler extends AbstractModifierHandler{
         Ability ability = Ability.valueOf(reminder.toUpperCase());
 
         switch (modifier.operation()) {
-            case GRANT -> hero.getSavingThrowProficiencies().add(ability);
+            case GRANT -> hero.getSavingThrowProficienciesFromContent().add(ability);
             case ADD, SET -> log.error("ADD/SET are not applicable to saving throw proficiency");
         }
     }
