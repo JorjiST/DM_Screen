@@ -1,0 +1,7 @@
+{
+  "id": "fighter",
+  "name": "воин",
+  "modifiers": [
+    { "target": "ability.strength", "operation": "ADD", "value": 100 }
+  ]
+}
