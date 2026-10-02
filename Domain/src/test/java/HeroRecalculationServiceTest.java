@@ -1,3 +1,4 @@
+import com.jorji.armor.ArmorClass;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.content.enums.Operation;
 import com.jorji.ability.Ability;
@@ -33,7 +34,7 @@ class HeroRecalculationServiceTest {
     @Test
     @DisplayName("appliesModifiersFromActiveSources")
     void appliesModifiersFromActiveSources() {
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1, new HitPoint(0),false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1, new HitPoint(0),false, new ArmorClass(0));
 
         ModifierSource raceSource = new TestSource(List.of(
                 new Modifier("ability.dexterity", Operation.ADD, 2)
@@ -47,7 +48,7 @@ class HeroRecalculationServiceTest {
     @Test
     @DisplayName("recalculateIsReversibleWhenSourceIsRemoved")
     void recalculateIsReversibleWhenSourceIsRemoved() {
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1, new HitPoint(0), false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1, new HitPoint(0), false, new ArmorClass(0));
 
         ModifierSource ring = new TestSource(List.of(
                 new Modifier("ability.charisma", Operation.ADD, 1)
@@ -64,7 +65,7 @@ class HeroRecalculationServiceTest {
     @Test
     @DisplayName("neverTouchesOverride")
     void neverTouchesOverride() {
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1,  new HitPoint(0), false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(30), 1,  new HitPoint(0), false, new ArmorClass(0));
         AbilityScore charisma = hero.getAbilityScores().get(Ability.CHARISMA);
         charisma.setOverride(99);
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.List;
+import com.jorji.armor.ArmorClass;
 import com.jorji.armor.ArmorClassCalculator;
 import com.jorji.content.Armor;
 import com.jorji.stat.HitPoint;
@@ -18,7 +19,7 @@ import com.jorji.hero.Hero;
 import com.jorji.modifier.handler.DefaultModifierHandlers;
 import com.jorji.stat.Speed;
 
-public class EquipmentServiceTest {
+class EquipmentServiceTest {
 
     private EquipmentService equipmentService;
     private ContentRegistry contentRegistry;
@@ -39,7 +40,7 @@ public class EquipmentServiceTest {
         Path root = path.getParent();
         contentRegistry.loadAll(root);
 
-        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
+        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false, new ArmorClass(0));
         recalculationService.recalculate(hero,
                 List.of(contentRegistry.getRace(hero.getRaceId()), contentRegistry.getCharacterClass(hero.getClassId())));
     }

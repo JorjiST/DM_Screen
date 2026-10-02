@@ -4,18 +4,18 @@ import com.jorji.ability.Ability;
 import com.jorji.ability.AbilityScore;
 import com.jorji.ability.Skill;
 import com.jorji.armor.ArmorClass;
-import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class HeroDTO {
     private String name;
     private String raceId;

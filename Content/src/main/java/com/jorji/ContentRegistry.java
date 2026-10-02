@@ -19,13 +19,13 @@ import java.util.stream.Stream;
 
 @Log4j
 public class ContentRegistry {
-    private final Map<String, Race> races = new HashMap<>();
-    private final Map<String, Item> items = new HashMap<>();
-    private final Map<String, CharacterClass> classes = new HashMap<>();
-    private final Map<String, Spell> spells = new HashMap<>();
-    private final Map<String, Peculiarity> peculiarities = new HashMap<>();
-    private final Map<String, Feat> feats = new HashMap<>();
-    private final ContentLoader loader = new ContentLoader();
+    private static final Map<String, Race> races = new HashMap<>();
+    private static final Map<String, Item> items = new HashMap<>();
+    private static final Map<String, CharacterClass> classes = new HashMap<>();
+    private static final Map<String, Spell> spells = new HashMap<>();
+    private static final Map<String, Peculiarity> peculiarities = new HashMap<>();
+    private static final Map<String, Feat> feats = new HashMap<>();
+    private static final ContentLoader loader = new ContentLoader();
 
     public void loadAll(Path rootDirectory) throws IOException {
         log.info("Loading races, classes, and items from: " + rootDirectory);

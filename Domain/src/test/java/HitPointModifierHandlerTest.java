@@ -1,3 +1,4 @@
+import com.jorji.armor.ArmorClass;
 import com.jorji.content.Item;
 import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.content.enums.Operation;
@@ -13,11 +14,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HitPointModifierHandlerTest {
+class HitPointModifierHandlerTest {
 
     @Test
     void appliesModifier(){
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false, new ArmorClass(0));
 
         Modifier hitPointMod = new Modifier("hitPoint", Operation.ADD, 5);
         Modifier tempHitPointMod = new Modifier("hitPoint.temp", Operation.ADD, 10);

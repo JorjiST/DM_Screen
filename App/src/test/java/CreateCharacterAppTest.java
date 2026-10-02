@@ -1,6 +1,7 @@
  import com.jorji.ContentRegistry;
  import com.jorji.ability.Ability;
  import com.jorji.ability.Skill;
+ import com.jorji.armor.ArmorClass;
  import com.jorji.content.CharacterClass;
  import com.jorji.hero.Hero;
  import com.jorji.modifier.HeroRecalculationService;
@@ -18,7 +19,7 @@
  import static org.junit.jupiter.api.Assertions.assertEquals;
  import static org.junit.jupiter.api.Assertions.assertTrue;
 
- public class CreateCharacterAppTest {
+class CreateCharacterAppTest {
 
      @Test
      void readAndCreateAndAddModifierTest() throws IOException, URISyntaxException {
@@ -32,12 +33,9 @@
 
          modifierEngine.registerModifierHandler(handlers.all());
 
-//         Path racePath = Path.of(getClass().getResource("/elf.json").toURI());
-//         Path classPath = Path.of(getClass().getResource("/fighter.json").toURI());
-
          Race race = contentRegistry.getRace("elf");
          CharacterClass characterClass = contentRegistry.getCharacterClass("fighter");
-         Hero hero = new Hero("Alan", race.id(), characterClass.id(), new Speed(race.baseSpeed()), 1,  new HitPoint(0),false);
+         Hero hero = new Hero("Alan", race.id(), characterClass.id(), new Speed(race.baseSpeed()), 1,  new HitPoint(0),false, new ArmorClass(0));
 
          int startedStrengthValue = hero.getAbilityScores().get(Ability.STRENGTH).effectiveValue();
          int startedDexterityValue = hero.getAbilityScores().get(Ability.DEXTERITY).effectiveValue();

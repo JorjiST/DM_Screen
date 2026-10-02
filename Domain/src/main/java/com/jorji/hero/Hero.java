@@ -8,6 +8,7 @@ import com.jorji.armor.ArmorClassCalculator;
 import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import java.util.*;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 @AllArgsConstructor
 public class Hero {
     private String name;
@@ -24,7 +26,7 @@ public class Hero {
     private int level;
     private HitPoint hitPoint;
     private boolean hasShield;
-    private final ArmorClass armorClass = new ArmorClass(0);
+    private ArmorClass armorClass;
     private final Set<Skill> skillProficienciesFromContent = EnumSet.noneOf(Skill.class);  //Работает только с хэндлерами
     private final Set<Ability> savingThrowProficienciesFromContent = EnumSet.noneOf(Ability.class);
     private final Set<Skill> manualSkillProficiencies = EnumSet.noneOf(Skill.class);  //Ручное изменение, по образу с ComputedStat
@@ -34,15 +36,13 @@ public class Hero {
     private final Set<Feat> feats = new HashSet<>();
     private final Set<Spell> spells = new HashSet<>();
     private final Set<Peculiarity> peculiarities = new HashSet<>();
-    private final Map<Ability, AbilityScore> abilityScores = Map.of(
-            Ability.CHARISMA, new AbilityScore(10),
-            Ability.CONSTITUTION, new AbilityScore(10),
-            Ability.DEXTERITY, new AbilityScore(10),
-            Ability.STRENGTH, new AbilityScore(10),
-            Ability.WISDOM, new AbilityScore(10),
-            Ability.INTELLIGENCE, new AbilityScore(10)
-    );
+    private final Map<Ability, AbilityScore> abilityScores = new EnumMap<>(Ability.class);
 
+    {
+        for (Ability ability : Ability.values()) {
+            abilityScores.put(ability, new AbilityScore(10));
+        }
+    }
 
     // API для Handler`ов
     public void grantSkillProficiencyFromContent(Skill skill) {

@@ -1,5 +1,6 @@
 import com.jorji.ability.Ability;
 import com.jorji.ability.AbilityScore;
+import com.jorji.armor.ArmorClass;
 import com.jorji.hero.Hero;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.handler.AbilityModifierHandler;
@@ -31,7 +32,7 @@ class ModifierEngineTest {
 
     @Test
     void applyModifier(){
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(1), 1,  new HitPoint(0), false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(1), 1,  new HitPoint(0), false, new ArmorClass(0));
 
         ModifierEngine modifierEngine = new ModifierEngine();
         AbilityModifierHandler modifierHandler = new AbilityModifierHandler();
@@ -51,7 +52,7 @@ class ModifierEngineTest {
 
     @Test
     void modifierEngineNeverTouchesOverride() {
-        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
+        Hero hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false, new ArmorClass(0));
         AbilityScore score = hero.getAbilityScores().get(Ability.CHARISMA);
         ModifierEngine engine = new ModifierEngine();
         AbilityModifierHandler modifierHandler = new AbilityModifierHandler();
