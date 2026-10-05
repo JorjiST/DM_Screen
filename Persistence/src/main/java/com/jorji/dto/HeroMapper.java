@@ -4,8 +4,8 @@ import com.jorji.content.Feat;
 import com.jorji.content.Item;
 import com.jorji.content.Peculiarity;
 import com.jorji.content.Spell;
-import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.hero.Hero;
+import com.jorji.hero.HeroDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -50,5 +50,9 @@ public final class HeroMapper {
                 peculiarities,
                 hero.getAbilityScores()
         );
+    }
+
+    public Hero fromDTO(HeroDTO heroDTO) {
+        return null;
     }
 }

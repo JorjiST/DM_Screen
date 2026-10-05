@@ -1,10 +1,9 @@
-package com.jorji.dto;
+package com.jorji.hero;
 
 import com.jorji.ability.Ability;
 import com.jorji.ability.AbilityScore;
 import com.jorji.ability.Skill;
 import com.jorji.armor.ArmorClass;
-import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import lombok.AllArgsConstructor;
