@@ -1,6 +1,6 @@
 import com.jorji.ContentRegistry;
+import com.jorji.armor.ArmorClass;
 import com.jorji.hero.Hero;
-import com.jorji.loader.ContentLoader;
 import com.jorji.modifier.ModifierEngine;
 import com.jorji.modifier.SpellService;
 import com.jorji.modifier.handler.DefaultModifierHandlers;
@@ -16,7 +16,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class SpellServiceTest {
+class SpellServiceTest {
 
     private ContentRegistry contentRegistry;
     private Hero hero;
@@ -34,7 +34,7 @@ public class SpellServiceTest {
         Path rootPath = path.getParent();
         contentRegistry.loadAll(rootPath);
 
-        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false);
+        hero = new Hero("Alan", "elf", "fighter", new Speed(10), 1, new HitPoint(0), false, new ArmorClass(0));
     }
 
     @Test

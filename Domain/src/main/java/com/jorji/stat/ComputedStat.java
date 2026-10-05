@@ -1,12 +1,13 @@
 package com.jorji.stat;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@EqualsAndHashCode
+@NoArgsConstructor
 public class ComputedStat {
-    private final int base;
+    private int base;
     private int computed;
     private Integer override;
 

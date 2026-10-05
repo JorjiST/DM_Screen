@@ -1,10 +1,15 @@
 package com.jorji.stat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class HitPoint extends ComputedStat {
     private int tempHitPoints;
 
@@ -12,6 +17,7 @@ public class HitPoint extends ComputedStat {
         super(base);
     }
 
+    @JsonIgnore
     public int getGeneralHealth() {
         return getComputed() + tempHitPoints;
     }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.modifier.ModifierSource;
 import com.jorji.modifier.Modifier;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
         @JsonSubTypes.Type(value = Weapon.class, name = "weapon")
 })
 @Getter
+@EqualsAndHashCode
 public class Item implements ModifierSource {
     private final String id;
     private final String name;
@@ -37,18 +39,6 @@ public class Item implements ModifierSource {
         this.description = description;
         this.equipmentSlot = equipmentSlot;
         this.modifiers = modifiers;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Item item)) return false;
-        if (o == this) return true;
-        return item.id.equals(this.id) &&
-                item.name.equals(this.name) &&
-                item.description.equals(this.description) &&
-                item.equipmentSlot.equals(this.equipmentSlot) &&
-                item.modifiers.equals(this.modifiers);
     }
 
     @Override
