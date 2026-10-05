@@ -1,9 +1,9 @@
 package com.jorji;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jorji.dto.HeroDTO;
 import com.jorji.dto.HeroMapper;
 import com.jorji.hero.Hero;
+import com.jorji.hero.HeroDTO;
 import lombok.extern.log4j.Log4j;
 import java.io.IOException;
 import java.nio.file.Path;

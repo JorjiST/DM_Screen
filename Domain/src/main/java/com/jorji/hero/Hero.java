@@ -5,6 +5,7 @@ import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.ability.*;
 import com.jorji.armor.ArmorClass;
 import com.jorji.armor.ArmorClassCalculator;
+import com.jorji.modifier.ModifierSource;
 import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import lombok.AllArgsConstructor;
@@ -168,5 +169,13 @@ public class Hero {
     public int getArmorClassValue(ArmorClassCalculator calculator) {
         int computed = calculator.calculate(this, Optional.ofNullable((Armor) equippedItems.get(EquipmentSlot.ARMOR)), hasShield());
         return armorClass.getOverride() != null ? armorClass.getOverride() : computed;
+    }
+
+    public List<ModifierSource> getHeroModifierSources() {
+        List<ModifierSource> modifierSources = new  ArrayList<>();
+        modifierSources.addAll(equippedItems.values());
+        modifierSources.addAll(peculiarities);
+        modifierSources.addAll(feats);
+        return modifierSources;
     }
 }
