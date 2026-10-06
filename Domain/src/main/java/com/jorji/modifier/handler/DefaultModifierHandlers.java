@@ -3,7 +3,7 @@ package com.jorji.modifier.handler;
 import java.util.List;
 
 public final class DefaultModifierHandlers {
-    public List<AbstractModifierHandler> all(){
+    public static List<AbstractModifierHandler> all(){
         return List.of(
                 new AbilityModifierHandler(),
                 new SpeedModifierHandler(),

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.jorji.HeroViewController"
+      spacing="8" style="-fx-padding: 16;">
+    <Label fx:id="nameLabel"/>
+    <Label fx:id="strengthLabel"/>
+    <Label fx:id="dexterityLabel"/>
+    <Label fx:id="speedLabel"/>
+</VBox>
