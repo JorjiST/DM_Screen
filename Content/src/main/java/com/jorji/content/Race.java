@@ -1,10 +1,21 @@
 package com.jorji.content;
 
 import com.jorji.modifier.ModifierSource;
+import com.jorji.HasID;
 import com.jorji.modifier.Modifier;
 
 import java.util.List;
 
-public record Race(String id, String name, int baseSpeed, List<Modifier> modifiers) implements ModifierSource {
+public record Race(
+    String id, 
+    String name, 
+    int baseSpeed, 
+    List<Modifier> modifiers
+) implements ModifierSource, HasID {
+
+    @Override
+    public String getId() {
+        return id;
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.jorji.dto;
+package com.jorji;
 
 import com.jorji.ContentRegistry;
 import com.jorji.content.Feat;

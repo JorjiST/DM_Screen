@@ -3,6 +3,6 @@
   "name": "Эльф",
   "baseSpeed": 30,
   "modifiers": [
-    { "target": "ability.dexterity", "operation": "ADD", "value": 200 }
+    { "target": "ability.dexterity", "operation": "ADD", "value": 2 }
   ]
 }

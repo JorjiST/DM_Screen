@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.jorji.HasID;
 import com.jorji.content.enums.EquipmentSlot;
 import com.jorji.modifier.ModifierSource;
 import com.jorji.modifier.Modifier;
@@ -19,7 +20,7 @@ import java.util.List;
 })
 @Getter
 @EqualsAndHashCode
-public class Item implements ModifierSource {
+public class Item implements ModifierSource, HasID {
     private final String id;
     private final String name;
     private final String description;

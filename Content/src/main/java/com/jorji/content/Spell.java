@@ -1,5 +1,6 @@
 package com.jorji.content;
 
+import com.jorji.HasID;
 import com.jorji.content.enums.SpellComponent;
 
 import java.util.Set;
@@ -13,4 +14,9 @@ public record Spell(
         String duration, //Concentration, Immediately
         int level,
         Set<SpellComponent> components
-){}
+) implements HasID {
+
+        @Override
+        public String getId() {
+                return id;
+        }}

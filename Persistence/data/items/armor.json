@@ -1,0 +1,1 @@
+{"type":"armor","id":"armor","name":"Броня","description":"Пиздатая броня","modifiers":[{"target":"ability.constitution","operation":"ADD","value":4}],"armorCategory":"HEAVY","baseArmorClass":18,"minStrength":15,"equipmentSlot":"ARMOR"}

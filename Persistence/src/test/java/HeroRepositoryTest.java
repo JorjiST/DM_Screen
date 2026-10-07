@@ -1,11 +1,11 @@
 import com.jorji.ContentRegistry;
-import com.jorji.HeroRepository;
 import com.jorji.armor.ArmorClass;
 import com.jorji.content.enums.Operation;
 import com.jorji.hero.Hero;
 import com.jorji.modifier.*;
 import com.jorji.modifier.handler.AbilityModifierHandler;
 import com.jorji.modifier.handler.SpeedModifierHandler;
+import com.jorji.repository.HeroRepository;
 import com.jorji.stat.HitPoint;
 import com.jorji.stat.Speed;
 import org.junit.jupiter.api.BeforeEach;

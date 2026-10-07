@@ -1,0 +1,1 @@
+{"type":"weapon","id":"weapon","name":"Оружие","description":"Пиздатое оружие","equipmentSlot":"HAND","modifiers":[{"target":"ability.strength","operation":"ADD","value":4}],"damageType":null,"dice":null,"countOfDice":0,"properties":[]}

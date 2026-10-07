@@ -1,0 +1,1 @@
+{"type":"item","id":"sword","name":"Меч","description":"Пиздатый меч","equipmentSlot":"HAND","modifiers":[{"target":"ability.dextrecity","operation":"ADD","value":4}]}
