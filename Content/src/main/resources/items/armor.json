@@ -1,0 +1,11 @@
+{
+  "id": "armor",
+  "name": "броня",
+  "description": "Дает +2 к силе",
+  "modifiers": [
+    {"target": "ability.strength", "operation": "ADD", "value": 2 }
+  ],
+  "armorCategory": "LIGHT",
+  "baseArmorClass": 3,
+  "minStrength": 0
+}

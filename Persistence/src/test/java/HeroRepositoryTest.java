@@ -11,12 +11,10 @@ import com.jorji.stat.Speed;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HeroRepositoryTest {
 
@@ -43,15 +41,13 @@ class HeroRepositoryTest {
         recalculationService.recalculate(hero, List.of(raceSource));
         equipmentService.equip(hero, "ring");
 
-        Path path = Path.of("hero.json");
-        heroRepository.save(hero, path);
-        assertTrue(Files.exists(path));
+        heroRepository.save(hero);
     }
 
     @Test
     void readsHero() {
         writesHero();
-        Hero readHero = heroRepository.read(Path.of("hero.json"), new ContentRegistry());
+        Hero readHero = heroRepository.read(Path.of("Alan.json"), new ContentRegistry());
         assertEquals(hero, readHero);
     }
 
